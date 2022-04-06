@@ -87,5 +87,22 @@ public class UserController {
         return response;
     }
 
+    @GetMapping(value = "/user/edit/{userId}")
+    public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/register");
+
+        User user = userDAO.findById(userId);
+        RegisterFormBean form = new RegisterFormBean();
+
+        form.setId(user.getId());
+        form.setEmail(user.getEmail());
+        form.setFirstName(user.getFirstName());
+        form.setLastName(user.getLastName());
+
+        response.addObject("formBean", form);
+
+        return response;
+    }
 }
 

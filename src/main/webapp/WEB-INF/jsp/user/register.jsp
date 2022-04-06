@@ -2,11 +2,11 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<%--<c:choose>--%>
-<%--    <c:when test="${empty formBean.id}">Sign up</c:when>--%>
-<%--    <c:when test="${not empty formBean.id}">Edit</c:when>--%>
-<%--    &lt;%&ndash;    <c:otherwise>undefined</c:otherwise>&ndash;%&gt;--%>
-<%--</c:choose>--%>
+<c:choose>
+    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>
+    <c:when test="${not empty formBean.id}"><h1>Edit</h1></c:when>
+    <%--    <c:otherwise>undefined</c:otherwise>--%>
+</c:choose>
 
 <%--method = get to show query after submit, method  is = post before --%>
 <form action="/user/registerSubmit" method="get">
