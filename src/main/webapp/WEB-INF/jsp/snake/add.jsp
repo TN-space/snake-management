@@ -9,7 +9,7 @@
 <%--</c:choose>--%>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<form action="/snake/added" method="post">
+<form action="/snake/show" method="post">
     <input type="hidden" name="id" value="${formBean.id}">
     Species <input type="text" name="species" id="speciesId" value="${bean}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">--%>

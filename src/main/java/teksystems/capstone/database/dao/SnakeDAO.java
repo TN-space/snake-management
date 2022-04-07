@@ -5,9 +5,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import teksystems.capstone.database.entity.Snake;
 
+import java.util.List;
+
 @Repository
 public interface SnakeDAO extends JpaRepository<Snake, Long> {
     Snake findById(@Param("id") Integer id);
 
     Snake findBySpecies(@Param("species") String species);
+
+    List<Snake> findAll();
 }

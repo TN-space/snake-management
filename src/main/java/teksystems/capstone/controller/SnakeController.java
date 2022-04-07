@@ -1,13 +1,16 @@
 package teksystems.capstone.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.SnakeDAO;
 import teksystems.capstone.database.entity.Snake;
@@ -16,6 +19,7 @@ import teksystems.capstone.formbean.AddSnakeFormBean;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -32,10 +36,9 @@ public class SnakeController {
         return response;
     }
 
-    @RequestMapping(value = "/snake/added", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/snake/show", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView added(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
-
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
@@ -67,11 +70,13 @@ public class SnakeController {
 
         snakeDAO.save(snake);
 
-        // here want to redirect to the edit page
-        // the edit page will then be responsible for loading the user from database
-        // redirect use an actual url rather than a view name - .setViewName uses a file name in the structure
+        List<Snake> snakes = snakeDAO.findAll();
+        // this line puts the list of users we just queried into the model
+        // usersModelKey - users: is a key-value pair in a model map
+        response.addObject("snakeModels", snakes);
 
 //        response.setViewName("redirect:/snake/edit/" + user.getId());
         return response;
     }
+
 }
