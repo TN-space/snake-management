@@ -74,7 +74,6 @@ public class UserController {
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
         user.setPassword(form.getPassword());
-        user.setCreateDate(new Date());
 
         userDAO.save(user);
 

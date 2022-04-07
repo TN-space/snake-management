@@ -3,6 +3,8 @@ package teksystems.capstone.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Getter
@@ -30,8 +32,11 @@ public class Snake {
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
-    @Column(name = "add_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date addDate = new Date();
+    @Column(name = "birth_date")
+    private LocalDate birthDate = LocalDate.now();
 
+    @Column(name = "age")
+    private String age = Period.between(birthDate, LocalDate.now()).getYears() > 0
+            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
+            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months";
 }

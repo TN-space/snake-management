@@ -18,10 +18,14 @@
 <%--        </div>--%>
 <%--    </c:forEach>--%>
     <br>
+    Age <input type="text" name="age" id="ageId" value="${bean}">
+    <br>
     Sex <select id="sexId">
         <option value="male">Male</option>
         <option value="female">Female</option>
     </select>
+    <br>
+    Birthdate <input type="date" name="birthDate" id="birthDateId" value="${bean}">
     <br>
     Note <input type="text" name="note" id="noteId" value="${bean}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">--%>
