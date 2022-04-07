@@ -11,7 +11,7 @@
 <%--method = get to show query after submit, method  is = post before --%>
 <div class="container">
 
-    <h1>Hello</h1>
+    <h1></h1>
 
     <div class="grid">
         <c:forEach items="${snakeModels}" var="snake">
@@ -20,7 +20,7 @@
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
                     <div class="card-image">
-                        <img src="https://i.pinimg.com/736x/71/46/57/714657a1217d0b0ddbdf77d75402b6ff.jpg" alt="boa">
+                        <img src="${snake.imgUrl}" alt="${snake.species}">
                     </div>
                     <h2 class="card-title">${snake.species}</h2>
                     <p class="card-detail">

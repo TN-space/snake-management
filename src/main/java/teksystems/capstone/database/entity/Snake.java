@@ -36,7 +36,11 @@ public class Snake {
     private LocalDate birthDate = LocalDate.now();
 
     @Column(name = "age")
-    private String age = Period.between(birthDate, LocalDate.now()).getYears() > 0
-            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
-            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months";
+    private String age;
+//    Period.between(birthDate, LocalDate.now()).getYears() > 0
+//            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
+//            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months"
+
+    @Column(name = "image_url")
+    private String imgUrl;
 }

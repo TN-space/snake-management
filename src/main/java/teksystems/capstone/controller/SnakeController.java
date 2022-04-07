@@ -67,6 +67,7 @@ public class SnakeController {
         snake.setSex(form.getSex());
         snake.setBirthDate(form.getBirthDate());
         snake.setNote(form.getNote());
+        snake.setImgUrl(form.getImgUrl());
 
         snakeDAO.save(snake);
 

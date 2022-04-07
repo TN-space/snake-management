@@ -36,4 +36,6 @@ public class AddSnakeFormBean {
             ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
             : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months";
 
+    private String imgUrl;
+
 }

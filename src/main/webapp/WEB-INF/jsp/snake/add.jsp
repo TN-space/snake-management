@@ -9,7 +9,7 @@
 <%--</c:choose>--%>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<form action="/snake/show" method="post">
+<form action="/snake/show" method="get">
     <input type="hidden" name="id" value="${formBean.id}">
     Species <input type="text" name="species" id="speciesId" value="${bean}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">--%>
@@ -20,12 +20,14 @@
     <br>
     Age <input type="text" name="age" id="ageId" value="${bean}">
     <br>
-    Sex <select id="sexId">
+    Sex <select name="sex" id="sexId">
         <option value="male">Male</option>
         <option value="female">Female</option>
     </select>
     <br>
     Birthdate <input type="date" name="birthDate" id="birthDateId" value="${bean}">
+    <br>
+    Image URL <input type="text" name="imgUrl" id="imgUrlId" value="${bean}">
     <br>
     Note <input type="text" name="note" id="noteId" value="${bean}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">--%>
