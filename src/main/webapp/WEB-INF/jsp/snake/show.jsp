@@ -16,8 +16,8 @@
     <div class="grid">
         <c:forEach items="${snakeModels}" var="snake">
             <div class="card">
-                <input id="card1" type="checkbox">
-                <label class="tgl-btn" for="card1"><span></span></label>
+                <input id="${snake.id}" type="checkbox">
+                <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
                     <div class="card-image">
                         <img src="https://i.pinimg.com/736x/71/46/57/714657a1217d0b0ddbdf77d75402b6ff.jpg" alt="boa">
