@@ -4,8 +4,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -32,11 +30,11 @@ public class Snake {
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
-    @Column(name = "birth_date")
-    private LocalDate birthDate = LocalDate.now();
+    @Column(name = "birth_date", updatable = false)
+    private LocalDate birthDate;
 
-    @Column(name = "age")
-    private String age;
+//    @Column(name = "age")
+//    private String age;
 //    Period.between(birthDate, LocalDate.now()).getYears() > 0
 //            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
 //            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months"

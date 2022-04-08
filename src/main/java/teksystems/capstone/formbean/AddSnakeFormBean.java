@@ -3,13 +3,11 @@ package teksystems.capstone.formbean;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
-import java.time.Period;
 
 @Getter
 @Setter
@@ -26,15 +24,16 @@ public class AddSnakeFormBean {
 
     private String sex;
 
+    // 500 error if submit form without birthday - have to regex that or something later
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate birthDate = LocalDate.now();
+    private LocalDate birthDate;
 
     private String note;
 
     // age is not working as expected
-    private String age = Period.between(birthDate, LocalDate.now()).getYears() > 0
-            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
-            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months";
+//    private String age = Period.between(birthDate, LocalDate.now()).getYears() > 0
+//            ? (Period.between(birthDate, LocalDate.now()).getYears()) + " years"
+//            : (Period.between(birthDate, LocalDate.now()).getMonths()) + " months";
 
     private String imgUrl;
 

@@ -16,6 +16,7 @@
     <a href="/index">Index</a> &nbsp;
     <a href="/user/register">Sign up</a> &nbsp;
     <a href="/snake/add">Add Snake</a> &nbsp;
+    <a href="/snake/show">Show Snakes</a> &nbsp;
 <%--    <a href="/user/search">Search</a>--%>
     <hr>
 

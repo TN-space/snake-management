@@ -15,7 +15,7 @@
 
     <div class="grid">
         <c:forEach items="${snakeModels}" var="snake">
-            <div class="card">
+            <div class="card showDiv">
                 <input id="${snake.id}" type="checkbox">
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
@@ -24,41 +24,67 @@
                     </div>
                     <h2 class="card-title">${snake.species}</h2>
                     <p class="card-detail">
-                        <b>Age: </b>${snake.age}<br>
+<%--                        <c:forEach items="${ages}" var="age">--%>
+<%--                            <b>Age: </b>${age}<br>--%>
+<%--                        </c:forEach>--%>
                         <b>Sex: </b>${snake.sex}<br>
+                        <b>Birthday: </b>${snake.birthDate}<br>
                         <b>Note: </b>${snake.note}<br>
                     </p>
                 </div>
+                <button class="EditBtn" >Edit</button>
             </div>
         </c:forEach>
 
-<%--        <div class="card">--%>
-<%--            <input id="card2" type="checkbox">--%>
-<%--            <label class="tgl-btn" for="card2"><span></span></label>--%>
+<%--    forEach use hashmap--%>
+<%--    <c:forEach items="${mapModel}" var="snake">--%>
+<%--        <div class="card showDiv">--%>
+<%--            <input id="${snake.key}" type="checkbox">--%>
+<%--            <label class="tgl-btn" for="${snake.key}"><span></span></label>--%>
 <%--            <div class="tgl-view">--%>
 <%--                <div class="card-image">--%>
-<%--                    <img src="https://www.placecage.com/g/600/600" alt="cage">--%>
+<%--                    <img src="${snake.value.imgUrl}" alt="${snake.value.species}">--%>
 <%--                </div>--%>
-<%--                <h2 class="card-title">PlaceCage</h2>--%>
-<%--                <p class="card-detail">I think you've got this figured out by now.<br><br>Calm: https://www.placecage.com/200/300<br>Gray: https://www.placecage.com/g/200/300<br>CRAZY: https://www.placecage.com/c/200/300<br>GIF: https://www.placecage.com/gif/200/300</p>--%>
+<%--                <h2 class="card-title">${snake.value.species}</h2>--%>
+<%--                <p class="card-detail">--%>
+<%--                    <c:forEach items="${ages}" var="age">--%>
+<%--                        <b>Age: </b>${age}<br>--%>
+<%--                    </c:forEach>--%>
+<%--                    <b>Sex: </b>${snake.value.sex}<br>--%>
+<%--                    <b>Note: </b>${snake.value.note}<br>--%>
+<%--                </p>--%>
 <%--            </div>--%>
+<%--            <button class="EditBtn" >Edit</button>--%>
 <%--        </div>--%>
+<%--    </c:forEach>--%>
 
-<%--        <div class="card">--%>
-<%--            <input id="card3" type="checkbox">--%>
-<%--            <label class="tgl-btn" for="card3"><span></span></label>--%>
-<%--            <div class="tgl-view">--%>
-<%--                <div class="card-image">--%>
-<%--                    <img src="https://www.stevensegallery.com/g/600/600" alt="seagal">--%>
-<%--                </div>--%>
-<%--                <h2 class="card-title">Steven SeGALLERY</h2>--%>
-<%--                <p class="card-detail">The internet was missing the ability to provide custom-sized placeholder images of Steven Segal. Now it can.<br><br>Calm: https://stevensegallery.com/200/300<br>Gray: https://stevensegallery.com/g/200/300</p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <form id="formId" action="/snake/edit" method="get" style="display: none;">
+            <input type="hidden" name="id" value="${formBean.id}">
+            Species <input type="text" name="species" id="speciesId" value="${bean}">
+            <br>
+            Sex <select name="sex" id="sexId">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+            <br>
+            Birthdate <input type="date" name="birthDate" id="birthDateId" value="${bean}">
+            <br>
+            Image URL <input type="text" name="imgUrl" id="imgUrlId" value="${bean}">
+            <br>
+            Note <input type="text" name="note" id="noteId" value="${bean}">
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
 
     </div>
 </div>
 
-
+<script>
+    $('.EditBtn').click(function(){
+        $('.showDiv').hide();
+        $('#formId').show();
+    })
+</script>
 
 <jsp:include page="../include/footer.jsp" />
