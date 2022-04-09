@@ -1,4 +1,4 @@
-package teksystems.capstone.formbean;
+package teksystems.capstone.formbean.snake;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class AddSnakeFormBean {
     private String sex;
 
     // 500 error if submit form without birthday - have to regex that or something later
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate birthDate;
 
     private String note;

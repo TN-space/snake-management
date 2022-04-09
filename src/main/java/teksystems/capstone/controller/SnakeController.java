@@ -11,18 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.SnakeDAO;
 import teksystems.capstone.database.entity.Snake;
-import teksystems.capstone.database.entity.User;
-import teksystems.capstone.formbean.AddSnakeFormBean;
+import teksystems.capstone.formbean.snake.AddSnakeFormBean;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.Period;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-
-import static java.time.temporal.ChronoUnit.DAYS;
 
 @Slf4j
 @Controller
@@ -57,7 +49,6 @@ public class SnakeController {
 
         // first, we assumed it's an edit, and thus we want to query the user from database using id
         Snake snake = snakeDAO.findById(form.getId());
-        log.info("snake id: " + form.getId());
         // if user is null, aka the id isn't there, aka new user
         if (snake == null) {
             // hence, create new user
@@ -121,22 +112,22 @@ public class SnakeController {
     }
 
 
-    @GetMapping(value = "/snake/edit")
-    public ModelAndView editSnake(@Valid AddSnakeFormBean form) throws Exception {
+    @GetMapping(value = "/snake/edit/{snakeId}")
+    public ModelAndView editSnake(@PathVariable("snakeId") Integer snakeId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("snake/show");
+        response.setViewName("snake/add");
 
-//        Snake snake = snakeDAO.findById(snakeId);
-//        RegisterFormBean form = new RegisterFormBean();
-            log.info("IDDD snake:" + form.getId());
-//        form.setId(user.getId());
-//        form.setEmail(user.getEmail());
-//        form.setFirstName(user.getFirstName());
-//        form.setLastName(user.getLastName());
-        // Normally we wouldn't populate for passwords
+        log.info("snake id in Edit: "+snakeId);
+        Snake snake = snakeDAO.findById(snakeId);
+        AddSnakeFormBean form = new AddSnakeFormBean();
 
+        form.setSpecies(snake.getSpecies());
+        form.setSex(snake.getSex());
+        form.setBirthDate(snake.getBirthDate());
+        form.setNote(snake.getNote());
+        form.setImgUrl(snake.getImgUrl());
 
-//        response.addObject("formBean", form);
+        response.addObject("formBean", form);
 
         return response;
     }

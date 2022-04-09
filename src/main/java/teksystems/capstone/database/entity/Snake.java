@@ -30,7 +30,7 @@ public class Snake {
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
-    @Column(name = "birth_date", updatable = false)
+    @Column(name = "birth_date")
     private LocalDate birthDate;
 
 //    @Column(name = "age")

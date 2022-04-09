@@ -2,7 +2,6 @@ package teksystems.capstone.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,11 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.UserDAO;
 import teksystems.capstone.database.entity.User;
-import teksystems.capstone.formbean.RegisterFormBean;
+import teksystems.capstone.formbean.user.RegisterFormBean;
 
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @Controller

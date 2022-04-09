@@ -29,7 +29,7 @@
 
     <div class="grid">
         <c:forEach items="${snakesModel}" var="snake">
-            <div class="card showDiv">
+            <div class="card divCard">
                 <input id="${snake.id}" type="checkbox">
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
@@ -46,7 +46,7 @@
                         <b>Note: </b>${snake.note}<br>
                     </p>
                 </div>
-                <button class="EditBtn" >Edit</button>
+                <a href="/snake/edit/${snake.id}" class="EditBtn">Edit</a>
             </div>
         </c:forEach>
 
@@ -96,7 +96,7 @@
 
 <script>
     $('.EditBtn').click(function(){
-        $('.showDiv').hide();
+        $('.divCard').hide();
         $('#formId').show();
     })
 </script>

@@ -1,4 +1,4 @@
-package teksystems.capstone.formbean;
+package teksystems.capstone.formbean.user;
 
 import lombok.Getter;
 import lombok.Setter;
