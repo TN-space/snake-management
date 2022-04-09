@@ -93,18 +93,30 @@ public class SnakeController {
 //        }
 //        response.addObject("mapModel", map);
 
+        // if have time, add adding successful message
         // use redirect to trigger the next method/function
         response.setViewName("redirect:/snake/show");
         return response;
     }
 
     @GetMapping(value = "/snake/show")
-    public ModelAndView showAllSnakes() throws Exception {
+    public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        List<Snake> snakes = snakeDAO.findAll();
-        response.addObject("snakeModels", snakes);
-
+        // if the search is not blank
+        if(!StringUtils.isBlank(search)) {
+            // run these lines
+            List<Snake> snakes = snakeDAO.findBySpeciesContainingIgnoreCase(search);
+            // this line puts the list of users we just queried into the model
+            // usersModelKey - users: is a key-value pair in a model map
+            response.addObject("snakesModel", snakes);
+        } else {
+            // else, run these
+            List<Snake> snakes = snakeDAO.findAll();
+            response.addObject("snakesModel", snakes);
+            search = "...";
+        };
+        response.addObject("searchTerm", search);
         return response;
     }
 
@@ -128,5 +140,4 @@ public class SnakeController {
 
         return response;
     }
-
 }

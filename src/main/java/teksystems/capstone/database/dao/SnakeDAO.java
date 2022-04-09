@@ -11,7 +11,7 @@ import java.util.List;
 public interface SnakeDAO extends JpaRepository<Snake, Long> {
     Snake findById(@Param("id") Integer id);
 
-    Snake findBySpecies(@Param("species") String species);
+    List<Snake> findBySpeciesContainingIgnoreCase(@Param("species") String species);
 
     List<Snake> findAll();
 }

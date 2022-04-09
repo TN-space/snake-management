@@ -8,13 +8,27 @@
 <%--    &lt;%&ndash;    <c:otherwise>undefined</c:otherwise>&ndash;%&gt;--%>
 <%--</c:choose>--%>
 
+<%--<div class="wrap">--%>
+<%--    <div class="search">--%>
+<%--        <input type="text" class="searchTerm" placeholder="What are you looking for?">--%>
+<%--        <button type="submit" class="searchButton">--%>
+<%--            <i class="fa fa-search"></i>--%>
+<%--        </button>--%>
+<%--    </div>--%>
+<%--</div>--%>
+<form action="/snake/show" method="get" class="search-box">
+    <input name="search" id="searchInput" type="search" placeholder="${searchTerm}" />
+    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
+
 <%--method = get to show query after submit, method  is = post before --%>
 <div class="container">
+
 
     <h1></h1>
 
     <div class="grid">
-        <c:forEach items="${snakeModels}" var="snake">
+        <c:forEach items="${snakesModel}" var="snake">
             <div class="card showDiv">
                 <input id="${snake.id}" type="checkbox">
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
