@@ -26,7 +26,7 @@ public class SnakeController {
     @RequestMapping(value = "/snake/add", method = RequestMethod.GET)
     public ModelAndView create() throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("snake/add");
+        response.setViewName("snake/addSnake");
 
         return response;
     }
@@ -89,11 +89,11 @@ public class SnakeController {
 
         // if have time, add adding successful message
         // use redirect to trigger the next method/function
-        response.setViewName("redirect:/snake/show");
+        response.setViewName("redirect:/snake/showSnakes");
         return response;
     }
 
-    @GetMapping(value = "/snake/show")
+    @GetMapping(value = "/snake/showSnakes")
     public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
         List<Snake> snakes;
@@ -104,7 +104,7 @@ public class SnakeController {
         } else {
             // else, run these
             snakes = snakeDAO.findAll();
-            search = "...";
+            search = "search animal...";
         }
         // this line puts the list of users we just queried into the model
         // usersModelKey - users: is a key-value pair in a model map
@@ -118,7 +118,7 @@ public class SnakeController {
     @GetMapping(value = "/snake/edit/{snakeId}")
     public ModelAndView editSnake(@PathVariable("snakeId") Integer snakeId) throws Exception {
         ModelAndView response = new ModelAndView();
-        response.setViewName("snake/add");
+        response.setViewName("snake/addSnake");
 
         Snake snake = snakeDAO.findById(snakeId);
         AddSnakeFormBean form = new AddSnakeFormBean();

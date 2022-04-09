@@ -20,13 +20,13 @@
     <br>
     Sex <select name="sex" id="sexId">
     <c:choose>
-        <c:when test="${formBean.sex == 'male'}">
-            <option value="male">Male</option>
+        <c:when test="${formBean.sex == 'female'}">
             <option value="female">Female</option>
+            <option value="male">Male</option>
         </c:when>
         <c:otherwise>
-            <option value="female">Female</option>
             <option value="male">Male</option>
+            <option value="female">Female</option>
         </c:otherwise>
     </c:choose>
     </select>
