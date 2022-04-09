@@ -35,6 +35,7 @@ public class SnakeController {
     @RequestMapping(value = "/snake/added", method = {RequestMethod.GET})
     public ModelAndView added(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
+        log.info("snake id in Added: "+ form.getId());
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
@@ -46,6 +47,8 @@ public class SnakeController {
             response.setViewName("snake/added");
             return response;
         }
+
+
 
         // first, we assumed it's an edit, and thus we want to query the user from database using id
         Snake snake = snakeDAO.findById(form.getId());
@@ -117,10 +120,10 @@ public class SnakeController {
         ModelAndView response = new ModelAndView();
         response.setViewName("snake/add");
 
-        log.info("snake id in Edit: "+snakeId);
         Snake snake = snakeDAO.findById(snakeId);
         AddSnakeFormBean form = new AddSnakeFormBean();
 
+        form.setId(snake.getId());
         form.setSpecies(snake.getSpecies());
         form.setSex(snake.getSex());
         form.setBirthDate(snake.getBirthDate());

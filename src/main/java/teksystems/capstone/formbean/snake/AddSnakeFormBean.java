@@ -25,7 +25,7 @@ public class AddSnakeFormBean {
     private String sex;
 
     // 500 error if submit form without birthday - have to regex that or something later
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     private String note;

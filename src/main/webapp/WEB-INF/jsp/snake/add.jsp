@@ -2,15 +2,15 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<%--<c:choose>--%>
+<c:choose>
 <%--    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>--%>
-<%--    <c:when test="${not empty formBean.id}"><h1>Edit</h1></c:when>--%>
-<%--    &lt;%&ndash;    <c:otherwise>undefined</c:otherwise>&ndash;%&gt;--%>
-<%--</c:choose>--%>
+    <c:when test="${not empty formBean.id}"><h1>Change information</h1></c:when>
+        <c:otherwise><h1>Add snake</h1></c:otherwise>
+</c:choose>
 
 <%--method = get to show query after submit, method  is = post before --%>
 <form action="/snake/added" method="get">
-    <input type="hidden" name="id" value="${formBean.id}">
+    <input type="hidden" name="id" value="${formBean.id}"><br>
     Species <input type="text" name="species" id="speciesId" value="${formBean.species}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">--%>
 <%--        <div style="color: red;">--%>
