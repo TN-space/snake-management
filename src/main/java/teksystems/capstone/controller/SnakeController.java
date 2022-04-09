@@ -102,20 +102,20 @@ public class SnakeController {
     @GetMapping(value = "/snake/show")
     public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
-
+        List<Snake> snakes;
         // if the search is not blank
         if(!StringUtils.isBlank(search)) {
             // run these lines
-            List<Snake> snakes = snakeDAO.findBySpeciesContainingIgnoreCase(search);
-            // this line puts the list of users we just queried into the model
-            // usersModelKey - users: is a key-value pair in a model map
-            response.addObject("snakesModel", snakes);
+            snakes = snakeDAO.findBySpeciesContainingIgnoreCase(search);
         } else {
             // else, run these
-            List<Snake> snakes = snakeDAO.findAll();
-            response.addObject("snakesModel", snakes);
+            snakes = snakeDAO.findAll();
             search = "...";
-        };
+        }
+        // this line puts the list of users we just queried into the model
+        // usersModelKey - users: is a key-value pair in a model map
+        response.addObject("snakesModel", snakes);
+
         response.addObject("searchTerm", search);
         return response;
     }
