@@ -71,7 +71,7 @@
 <%--        </div>--%>
 <%--    </c:forEach>--%>
 
-        <form id="formId" action="/snake/edit" method="get" style="display: none;">
+        <form action="/snake/edit" method="get" style="display: none;">
             <input type="hidden" name="id" value="${formBean.id}">
             Species <input type="text" name="species" id="speciesId" value="${bean}">
             <br>
@@ -92,6 +92,8 @@
 
     </div>
 </div>
+
+
 
 <script>
     $('.EditBtn').click(function(){

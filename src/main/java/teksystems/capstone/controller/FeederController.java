@@ -7,14 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.entity.Feeder;
-import teksystems.capstone.database.entity.Snake;
 import teksystems.capstone.formbean.feeder.AddFeederFormBean;
 
 import javax.validation.Valid;
@@ -97,7 +93,7 @@ public class FeederController {
     }
 
     @GetMapping(value = "/feeder/showFeeders")
-    public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
+    public ModelAndView showFeeders(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
         List<Feeder> feeders;
         // if the search is not blank
@@ -114,6 +110,26 @@ public class FeederController {
         response.addObject("feedersModel", feeders);
 
         response.addObject("searchTerm", search);
+        return response;
+    }
+
+    @GetMapping(value = "/feeder/edit/{feederId}")
+    public ModelAndView editFeeder(@PathVariable("feederId") Integer feederId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("feeder/addFeeder");
+
+        Feeder feeder = feederDAO.findById(feederId);
+        AddFeederFormBean form = new AddFeederFormBean();
+
+        form.setId(feeder.getId());
+        form.setName(feeder.getName());
+        form.setSize(feeder.getSize());
+        form.setStatus(feeder.getStatus());
+        form.setQuantity(feeder.getQuantity());
+        form.setImgUrl(feeder.getImgUrl());
+
+        response.addObject("FeederformBean", form);
+
         return response;
     }
 

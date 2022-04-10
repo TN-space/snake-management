@@ -9,29 +9,29 @@
 <%--</c:choose>--%>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<form action="/feeder/added" method="get">
-    <input type="hidden" name="id" value="${formBean.id}"><br>
+<form id="feeder-form" action="/feeder/added" method="get">
+    <input type="hidden" name="id" value="${FeederformBean.id}"><br>
     <br>
-    Name <input type="text" name="name" id="nameId" value="${formBean.name}">
+    Name <input type="text" name="name" id="nameId" value="${FeederformBean.name}">
     <br>
-    Size <input type="text" name="size" id="sizeId" value="${formBean.size}">
+    Size <input type="text" name="size" id="sizeId" value="${FeederformBean.size}">
     <br>
     Status <select name="status" id="statusId">
     <c:choose>
-        <c:when test="${formBean.sex == 'F/T'}">
+        <c:when test="${FeederformBean.status == 'F/T'}">
             <option value="F/T">F/T</option>
-            <option value="live">Live</option>
+            <option value="Live">Live</option>
         </c:when>
         <c:otherwise>
-            <option value="live">Live</option>
+            <option value="Live">Live</option>
             <option value="F/T">F/T</option>
         </c:otherwise>
     </c:choose>
 </select>
     <br>
-    Quantity <input type="number" name="quantity" id="quantityId" value="${formBean.quantity}">
+    Quantity <input type="number" name="quantity" id="quantityId" value="${FeederformBean.quantity}">
     <br>
-    Image URL <input type="text" name="imgUrl" value="${formBean.imgUrl}">
+    Image URL <input type="text" name="imgUrl" value="${FeederformBean.imgUrl}">
     <br>
     <button type="submit">Submit</button>
 </form>
