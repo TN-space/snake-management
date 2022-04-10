@@ -9,10 +9,10 @@
 <%--</c:choose>--%>
 
 
-<%--<form action="/snake/showSnakes" method="get" class="search-box">--%>
-<%--    <input name="search" id="searchInput" type="search" placeholder="${searchTerm}" />--%>
-<%--    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>--%>
-<%--</form>--%>
+<form action="/feeder/showFeeders" method="get" class="search-box">
+    <input name="search" type="search" placeholder="${searchTerm}" />
+    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
 
 <div class="cards-container">
 

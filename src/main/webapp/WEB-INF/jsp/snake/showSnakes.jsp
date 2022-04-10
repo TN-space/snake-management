@@ -10,7 +10,7 @@
 
 
 <form action="/snake/showSnakes" method="get" class="search-box">
-    <input name="search" id="searchInput" type="search" placeholder="${searchTerm}" />
+    <input name="search" type="search" placeholder="${searchTerm}" />
     <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 </form>
 

@@ -107,7 +107,7 @@ public class FeederController {
         } else {
             // else, run these
             feeders = feederDAO.findAll();
-            search = "search animal...";
+            search = "search feeder...";
         }
         // this line puts the list of users we just queried into the model
         // usersModelKey - users: is a key-value pair in a model map
