@@ -26,7 +26,14 @@
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
                     <div class="card-image">
-                        <img src="${snake.imgUrl}" alt="${snake.species}">
+                        <c:choose>
+                            <c:when test="${not empty snake.imgUrl}">
+                                <img src="${snake.imgUrl}" alt="${snake.species}">
+                            </c:when>
+                            <c:otherwise>
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONkkkM0RF84PFv3zxWOX5N1dbXMSRe5YWpg&usqp=CAU" alt="snake">
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <h2 class="card-title">${snake.species}</h2>
                     <p class="card-detail">

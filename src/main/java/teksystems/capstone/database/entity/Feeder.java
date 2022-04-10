@@ -30,4 +30,7 @@ public class Feeder {
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "image_url")
+    private String imgUrl;
 }

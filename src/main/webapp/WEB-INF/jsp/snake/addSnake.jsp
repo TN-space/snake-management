@@ -33,7 +33,7 @@
     <br>
     Birthdate <input type="date" name="birthDate" id="birthDateId" value="${formBean.birthDate}">
     <br>
-    Image URL <input type="text" name="imgUrl" id="imgUrlId" value="${formBean.imgUrl}">
+    Image URL <input type="text" name="imgUrl" value="${formBean.imgUrl}">
     <br>
     Note <input type="text" name="note" id="noteId" value="${formBean.note}">
 <%--    <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">--%>

@@ -16,15 +16,26 @@
 
 <div class="cards-container">
 
-    <div class="card-wrapper">
-        <div class="card-image">
-            <img class="feeder-img" src="https://illuminatisymbols.info/wp-content/uploads/illuminati-symbols-Starbucks-Coffee-Logo.gif" alt="Avatar">
+    <c:forEach items="${feedersModel}" var="feeder">
+        <div class="card-wrapper">
+            <div class="card-image">
+                <c:choose>
+                    <c:when test="${not empty feeder.imgUrl}">
+                        <img class="feeder-img" src="${feeder.imgUrl}" alt="feeder">
+                    </c:when>
+                    <c:otherwise>
+                        <img class="feeder-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6nybAOUm_pgyjHCBXZQ9ghbRT8R1L6aflGw&usqp=CAU" alt="feeder">
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <div class="card-content">
+                <h3 class="title">${feeder.name}</h3>
+                <p><b>Size:</b> ${feeder.size}</p>
+                <p><b>Status:</b> ${feeder.status}</p>
+                <p><b>Quantity:</b> ${feeder.quantity}</p>
+            </div>
         </div>
-        <div class="card-content">
-            <h3 class="title">Coffe Pack</h3>
-        </div>
-    </div>
-
+    </c:forEach>
 
 </div>
 

@@ -31,6 +31,8 @@
     <br>
     Quantity <input type="number" name="quantity" id="quantityId" value="${formBean.quantity}">
     <br>
+    Image URL <input type="text" name="imgUrl" value="${formBean.imgUrl}">
+    <br>
     <button type="submit">Submit</button>
 </form>
 

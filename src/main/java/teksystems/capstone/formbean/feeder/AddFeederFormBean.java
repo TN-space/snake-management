@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 
 @Getter
@@ -23,4 +24,6 @@ public class AddFeederFormBean {
     private String status;
 
     private Integer quantity;
+
+    private String imgUrl;
 }

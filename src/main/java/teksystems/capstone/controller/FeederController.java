@@ -80,6 +80,7 @@ public class FeederController {
         feeder.setSize(form.getSize());
         feeder.setStatus(form.getStatus());
         feeder.setQuantity(form.getQuantity());
+        feeder.setImgUrl(form.getImgUrl());
 
         feederDAO.save(feeder);
 
