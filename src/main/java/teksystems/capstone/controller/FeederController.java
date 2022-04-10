@@ -1,19 +1,24 @@
 package teksystems.capstone.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.entity.Feeder;
+import teksystems.capstone.database.entity.Snake;
 import teksystems.capstone.formbean.feeder.AddFeederFormBean;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -86,7 +91,29 @@ public class FeederController {
 
         // if have time, add adding successful message
         // use redirect to trigger the next method/function
-        response.setViewName("redirect:/snake/showSnakes");
+        response.setViewName("redirect:/feeder/showFeeders");
         return response;
     }
+
+    @GetMapping(value = "/feeder/showFeeders")
+    public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
+        ModelAndView response = new ModelAndView();
+        List<Feeder> feeders;
+        // if the search is not blank
+        if(!StringUtils.isBlank(search)) {
+            // run these lines
+            feeders = feederDAO.findByNameContainingIgnoreCase(search);
+        } else {
+            // else, run these
+            feeders = feederDAO.findAll();
+            search = "search animal...";
+        }
+        // this line puts the list of users we just queried into the model
+        // usersModelKey - users: is a key-value pair in a model map
+        response.addObject("feedersModel", feeders);
+
+        response.addObject("searchTerm", search);
+        return response;
+    }
+
 }
