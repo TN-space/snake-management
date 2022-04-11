@@ -13,5 +13,7 @@ public interface FeederDAO extends JpaRepository<Feeder, Long> {
 
     Feeder findById(@Param("id") Integer id);
 
+    List<Feeder> findAll();
+
     List<Feeder> findByNameContainingIgnoreCase(@Param("name") String name);
 }

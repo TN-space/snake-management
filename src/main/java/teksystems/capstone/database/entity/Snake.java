@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -41,4 +42,9 @@ public class Snake {
 
     @Column(name = "image_url")
     private String imgUrl;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "snake", fetch = FetchType.LAZY)
+    private List<FeederSnake> feederSnakes;
 }

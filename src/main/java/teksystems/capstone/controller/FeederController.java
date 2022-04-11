@@ -24,7 +24,7 @@ public class FeederController {
     private FeederDAO feederDAO;
 
     @RequestMapping(value = "/feeder/add", method = RequestMethod.GET)
-    public ModelAndView create() throws Exception {
+    public ModelAndView addingFeeder() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("feeder/addFeeder");
 
@@ -32,9 +32,8 @@ public class FeederController {
     }
 
     @RequestMapping(value = "/feeder/added", method = {RequestMethod.GET})
-    public ModelAndView added(@Valid AddFeederFormBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView feederAdded(@Valid AddFeederFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
-
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
@@ -71,7 +70,6 @@ public class FeederController {
 //        List<String> ages = new ArrayList<>();
 //        ages.add(age);
 //        response.addObject("ages", ages);
-        log.info("info from From: "+form);
         feeder.setName(form.getName());
         feeder.setSize(form.getSize());
         feeder.setStatus(form.getStatus());
@@ -128,7 +126,7 @@ public class FeederController {
         form.setQuantity(feeder.getQuantity());
         form.setImgUrl(feeder.getImgUrl());
 
-        response.addObject("FeederformBean", form);
+        response.addObject("feederFormBean", form);
 
         return response;
     }

@@ -24,7 +24,7 @@ public class SnakeController {
     private SnakeDAO snakeDAO;
 
     @RequestMapping(value = "/snake/add", method = RequestMethod.GET)
-    public ModelAndView create() throws Exception {
+    public ModelAndView addingSnake() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("snake/addSnake");
 
@@ -33,7 +33,7 @@ public class SnakeController {
 
 //    RequestMethod.POST, <-- this request post is taken from this request below
     @RequestMapping(value = "/snake/added", method = {RequestMethod.GET})
-    public ModelAndView added(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
+    public ModelAndView snakeAdded(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
         log.info("snake id in Added: "+ form.getId());
         if (bindingResult.hasErrors()) {
@@ -130,7 +130,7 @@ public class SnakeController {
         form.setNote(snake.getNote());
         form.setImgUrl(snake.getImgUrl());
 
-        response.addObject("formBean", form);
+        response.addObject("snakeFormBean", form);
 
         return response;
     }

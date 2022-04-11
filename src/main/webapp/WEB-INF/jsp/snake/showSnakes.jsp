@@ -15,13 +15,12 @@
 </form>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<div class="container">
-
+<div id="snakes-container" class="container">
     <h1></h1>
 
     <div class="grid">
         <c:forEach items="${snakesModel}" var="snake">
-            <div class="card divCard">
+            <div class="card">
                 <input id="${snake.id}" type="checkbox">
                 <label class="tgl-btn" for="${snake.id}"><span></span></label>
                 <div class="tgl-view">
@@ -45,7 +44,7 @@
                         <b>Note: </b>${snake.note}<br>
                     </p>
                 </div>
-                <a href="/snake/edit/${snake.id}" class="EditBtn">Edit</a>
+                <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
             </div>
         </c:forEach>
 
@@ -71,34 +70,13 @@
 <%--        </div>--%>
 <%--    </c:forEach>--%>
 
-        <form action="/snake/edit" method="get" style="display: none;">
-            <input type="hidden" name="id" value="${formBean.id}">
-            Species <input type="text" name="species" id="speciesId" value="${bean}">
-            <br>
-            Sex <select name="sex" id="sexId">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-            <br>
-            Birthdate <input type="date" name="birthDate" id="birthDateId" value="${bean}">
-            <br>
-            Image URL <input type="text" name="imgUrl" id="imgUrlId" value="${bean}">
-            <br>
-            Note <input type="text" name="note" id="noteId" value="${bean}">
-            <br>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-
     </div>
 </div>
 
-
-
 <script>
-    $('.EditBtn').click(function(){
-        $('.divCard').hide();
-        $('#formId').show();
+    $('#snake-edit-btn').click(function(){
+        $('#snakes-container').hide();
+        $('#snake-form').show();
     })
 </script>
 
