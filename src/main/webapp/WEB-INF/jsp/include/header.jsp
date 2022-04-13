@@ -17,8 +17,10 @@
 <body>
 
 <div class="container">
+
+    <a href="/index">Index</a> &nbsp;
+
     <sec:authorize access="!isAuthenticated()">
-        <a href="/index">Index</a> &nbsp;
         <a href="/login/login">Login</a>&nbsp;
         <a href="/user/register">Sign up</a> &nbsp;
     </sec:authorize>

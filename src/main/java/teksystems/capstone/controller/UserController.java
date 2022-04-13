@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.UserDAO;
 import teksystems.capstone.database.entity.User;
+import teksystems.capstone.database.entity.UserRole;
 import teksystems.capstone.formbean.user.RegisterFormBean;
 
 import javax.validation.Valid;
@@ -20,10 +22,15 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     /*
      * This is the controller method for the entry point of the user registration page.
@@ -74,15 +81,22 @@ public class UserController {
         user.setFirstName(form.getFirstName());
         user.setLastName(form.getLastName());
         user.setPassword(form.getPassword());
-
+        String password = passwordEncoder.encode(form.getPassword());
+        user.setPassword(password);
         userDAO.save(user);
+
+        UserRole userRole = new UserRole();
+        userRole.setUserId(user.getId());
+        userRole.setUserRole("USER");
 
         log.info(form.toString());
 
         // here want to redirect to the edit page
         // the edit page will then be responsible for loading the user from database
         // redirect use an actual url rather than a view name - .setViewName uses a file name in the structure
-        response.setViewName("redirect:/user/edit/" + user.getId());
+//        response.setViewName("redirect:/user/edit/" + user.getId());
+
+        response.setViewName("/index");
         return response;
     }
 

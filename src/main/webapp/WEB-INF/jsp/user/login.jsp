@@ -5,7 +5,7 @@
 <form action="/login/loginSubmit" method="post">
     Username: <input type="text" name="username">
     <br>
-    Password: <input type="text" name="password">
+    Password: <input type="password" name="password">
     <br>
     <button type="submit">Submit</button>
 </form>
