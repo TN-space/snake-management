@@ -2,7 +2,9 @@ package teksystems.capstone.controller;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -14,6 +16,7 @@ import teksystems.capstone.database.entity.User;
 import teksystems.capstone.formbean.user.RegisterFormBean;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -97,6 +100,28 @@ public class UserController {
         form.setLastName(user.getLastName());
 
         response.addObject("formBean", form);
+
+        return response;
+    }
+
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("/user/search")
+    public ModelAndView search(@RequestParam(name = "searchInput", required = false, defaultValue = "") String searchTerm) {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("user/search");
+
+        // implement with a search input
+        if(!StringUtils.isBlank(searchTerm)) {
+            List<User> users = userDAO.findByFirstNameContainingIgnoreCase(searchTerm);
+            // this line puts the list of users we just queried into the model
+            // usersModelKey - users: is a key-value pair in a model map
+            response.addObject("usersModel", users);
+        } else {
+            // else make an empty list
+            searchTerm = "...";
+        }
+
+        response.addObject("searchValue", searchTerm);
 
         return response;
     }

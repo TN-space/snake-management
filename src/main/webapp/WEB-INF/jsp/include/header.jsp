@@ -33,6 +33,9 @@
     authenticated as <sec:authentication property="principal.username" />
     </sec:authorize>
 
+    <sec:authorize access="hasAuthority('ADMIN')">
+        <a href="/user/search">Search</a>&nbsp;
+    </sec:authorize>
 <%--    <a href="/user/search">Search</a>--%>
     <hr>
 
