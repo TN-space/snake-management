@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +17,21 @@
 <body>
 
 <div class="container">
-    <a href="/index">Index</a> &nbsp;
-    <a href="/user/register">Sign up</a> &nbsp;
-    <a href="/snake/add">Add Snake</a> &nbsp;
-    <a href="/snake/showSnakes">Show Snakes</a> &nbsp;
-    <a href="/feeder/add">Add Feeder</a> &nbsp;
-    <a href="/feeder/showFeeders">Show Feeders</a> &nbsp;
-    <a href="/feederSnake/add">Add Feeding</a> &nbsp;
+    <sec:authorize access="!isAuthenticated()">
+        <a href="/index">Index</a> &nbsp;
+        <a href="/login/login">Login</a>&nbsp;
+        <a href="/user/register">Sign up</a> &nbsp;
+    </sec:authorize>
+
+    <sec:authorize access="isAuthenticated()">
+        <a href="/snake/add">Add Snake</a> &nbsp;
+        <a href="/snake/showSnakes">Show Snakes</a> &nbsp;
+        <a href="/feeder/add">Add Feeder</a> &nbsp;
+        <a href="/feeder/showFeeders">Show Feeders</a> &nbsp;
+        <a href="/feederSnake/add">Add Feeding</a> &nbsp;
+        <a href="/login/logout">Logout</a>&nbsp;
+    authenticated as <sec:authentication property="principal.username" />
+    </sec:authorize>
 
 <%--    <a href="/user/search">Search</a>--%>
     <hr>
