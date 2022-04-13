@@ -22,7 +22,6 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class UserController {
 
     @Autowired
@@ -51,6 +50,7 @@ public class UserController {
      * otherwise spring MVC will not be able to respond to the request
      * */
     /*This code now can do a create or update depending on if the id is already populated or null*/
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -100,6 +100,7 @@ public class UserController {
         return response;
     }
 
+    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @GetMapping(value = "/user/edit/{userId}")
     public ModelAndView editUser(@PathVariable("userId") Integer userId) throws Exception {
         ModelAndView response = new ModelAndView();
@@ -123,18 +124,17 @@ public class UserController {
     public ModelAndView search(@RequestParam(name = "searchInput", required = false, defaultValue = "") String searchTerm) {
         ModelAndView response = new ModelAndView();
         response.setViewName("user/search");
-
+        List<User> users;
         // implement with a search input
         if(!StringUtils.isBlank(searchTerm)) {
-            List<User> users = userDAO.findByFirstNameContainingIgnoreCase(searchTerm);
+            users = userDAO.findByFirstNameContainingIgnoreCase(searchTerm);
             // this line puts the list of users we just queried into the model
             // usersModelKey - users: is a key-value pair in a model map
-            response.addObject("usersModel", users);
         } else {
-            // else make an empty list
+            users = userDAO.findAll();
             searchTerm = "...";
         }
-
+        response.addObject("usersModel", users);
         response.addObject("searchValue", searchTerm);
 
         return response;

@@ -45,6 +45,7 @@
                     </p>
                 </div>
                 <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
+                <a href="/snake/delete/${snake.id}" id="snake-delete-btn">Remove</a>
             </div>
         </c:forEach>
 

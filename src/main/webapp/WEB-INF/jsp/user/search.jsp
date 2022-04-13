@@ -9,6 +9,9 @@
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
 
+<%--<c:if test="${empty searchValue}">--%>
+<%--    <h4>Total users: ${usersModel.size()}</h4>--%>
+<%--</c:if>--%>
 <c:if test="${not empty searchValue}">
     <h4>Search Result: ${usersModel.size()}</h4>
 </c:if>
