@@ -26,6 +26,9 @@ public class FeederSnake {
     @Column(name = "snake_id", updatable = false, insertable = false)
     private Integer snakeId;
 
+    @Column(name = "quantity")
+    private Integer quantity;
+
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "feeder_id", nullable = false)

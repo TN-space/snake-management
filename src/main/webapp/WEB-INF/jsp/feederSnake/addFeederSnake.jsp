@@ -3,11 +3,12 @@
 <jsp:include page="../include/header.jsp" />
 
 
-<c:choose>
-    <%--    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>--%>
-    <c:when test="${not empty feederSnakeFormBean.id}"><h1>Edit Feeding</h1></c:when>
-    <c:otherwise><h1>Feeding</h1></c:otherwise>
-</c:choose>
+<%--<c:choose>--%>
+<%--    &lt;%&ndash;    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>&ndash;%&gt;--%>
+<%--    <c:when test="${not empty feederSnakeFormBean.id}"><h1>Edit Feeding</h1></c:when>--%>
+<%--    <c:otherwise><h1>Feeding</h1></c:otherwise>--%>
+<%--</c:choose>--%>
+<h1>Feeding</h1>
 
 <%--method = get to show query after submit, method  is = post before --%>
 <form id="feeder-snake-form" action="/feederSnake/added" method="get">
@@ -16,6 +17,8 @@
     Snake species <input type="text" name="species" value="${feederSnakeFormBean.species}">
     <br>
     Feeder name <input type="text" name="name"  value="${feederSnakeFormBean.name}">
+    <br>
+    Quantity fed <input type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
     <br>
 <%--    Status <select name="status" id="statusId">--%>
 <%--    <c:choose>--%>

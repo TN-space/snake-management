@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface FeederSnakeDAO extends JpaRepository<FeederSnake, Long> {
 
+    FeederSnake findById(@Param("id") Integer id);
+
     @Query("Select fs from FeederSnake fs where fs.feederId = :feederId and fs.snakeId = :snakeId")
     List<FeederSnake> findAll(@Param("feederId") Integer feederId, @Param("snakeId") Integer snakeId);
 

@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @ToString
-public class FeederSnakeFormBean {
+public class AddFeederSnakeFormBean {
 
     private Integer id;
 
@@ -19,9 +19,9 @@ public class FeederSnakeFormBean {
 
     private Integer quantity;
 
-//    @NotBlank(message = "species name is required")
-//    private String species;
-//
-//    @NotBlank(message = "feeder name is required")
-//    private String name;
+    @NotBlank(message = "species name is required")
+    private String species;
+
+    @NotBlank(message = "feeder name is required")
+    private String name;
 }
