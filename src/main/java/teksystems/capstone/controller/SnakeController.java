@@ -3,6 +3,7 @@ package teksystems.capstone.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
+@PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class SnakeController {
 
     @Autowired
@@ -132,6 +134,22 @@ public class SnakeController {
 
         response.addObject("snakeFormBean", form);
 
+        return response;
+    }
+
+    @GetMapping(value = "/snake/remove/{snakeId}")
+    public ModelAndView removeSnake(@PathVariable("snakeId") Integer snakeId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        log.info("in remove");
+        response.setViewName("snake/showSnakes");
+
+//        Boolean isRemoved = snakeDAO
+        Snake snake = snakeDAO.findById(snakeId);
+        log.info("found snake: " + snake);
+        if (snake != null) {
+            snakeDAO.delete(snake);
+        }
+        response.setViewName("redirect:/snake/showSnakes");
         return response;
     }
 }

@@ -18,7 +18,7 @@
 <div id="snakes-container" class="container">
     <h1></h1>
 
-    <div class="grid">
+    <div class="grid" >
         <c:forEach items="${snakesModel}" var="snake">
             <div class="card">
                 <input id="${snake.id}" type="checkbox">
@@ -45,7 +45,10 @@
                     </p>
                 </div>
                 <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
-                <a href="/snake/delete/${snake.id}" id="snake-delete-btn">Remove</a>
+                <a href="/snake/remove/${snake.id}" id="snake-remove-btn">Remove</a>
+<%--                <form action="/snake/remove/${snake.id}">--%>
+<%--                    <button id="snake-remove-btn">Remove</button>--%>
+<%--                </form>--%>
             </div>
         </c:forEach>
 
