@@ -22,13 +22,12 @@
     <br>
 
 <%--    Snake --%>
-<%--    <select name="species" >--%>
-<%--    <option value="">hello</option>--%>
-<%--    <option value="">hi</option>--%>
-<%--    <c:forEach items="${snakesModel}" var="snake">--%>
-<%--        <option value="${snake.species}">${snake.species}</option>--%>
-<%--    </c:forEach>--%>
-
+    <select name="species" >
+    <option value="">hello</option>
+    <option value="">hi</option>
+    <c:forEach items="${snakesModel}" var="snake">
+        <option value="${snake.species}">${snake.species}</option>
+    </c:forEach>
 
     </select>
     <br>
