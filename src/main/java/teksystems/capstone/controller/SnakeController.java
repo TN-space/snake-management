@@ -50,8 +50,6 @@ public class SnakeController {
             return response;
         }
 
-
-
         // first, we assumed it's an edit, and thus we want to query the user from database using id
         Snake snake = snakeDAO.findById(form.getId());
         // if user is null, aka the id isn't there, aka new user

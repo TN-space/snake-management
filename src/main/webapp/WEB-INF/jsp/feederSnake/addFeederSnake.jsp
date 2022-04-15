@@ -10,7 +10,7 @@
 <%--</c:choose>--%>
 <h1>Feeding</h1>
 
-<%--method = get to show query after submit, method  is = post before --%>
+<%--method = get to show query after submit, method  is = post before--%>
 <form id="feeder-snake-form" action="/feederSnake/added" method="get">
     <input type="hidden" name="id" value="${feederSnakeFormBean.id}"><br>
     <br>
@@ -21,14 +21,17 @@
     Quantity fed <input type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
     <br>
 
-<%--    Snake --%>
+    Snake
     <select name="species" >
-    <option value="">hello</option>
-    <option value="">hi</option>
-    <c:forEach items="${snakesModel}" var="snake">
-        <option value="${snake.species}">${snake.species}</option>
+    <c:forEach items="${snakesModelKey}" var="snake">
+        <option value="${snake.id}">${snake.species}/${snake.sex}</option>
     </c:forEach>
-
+    </select>
+    <br>
+    <select name="species" >
+        <c:forEach items="${feedersModelKey}" var="feeder">
+            <option value="${feeder.id}">${feeder.name}/${feeder.size}/${feeder.quantity}</option>
+        </c:forEach>
     </select>
     <br>
     <button type="submit">Submit</button>

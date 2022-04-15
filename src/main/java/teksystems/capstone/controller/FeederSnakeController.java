@@ -1,14 +1,17 @@
 package teksystems.capstone.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.dao.FeederSnakeDAO;
@@ -19,6 +22,7 @@ import teksystems.capstone.database.entity.Snake;
 import teksystems.capstone.formbean.feederSnake.AddFeederSnakeFormBean;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -38,7 +42,14 @@ public class FeederSnakeController {
     public ModelAndView creatingFeeding() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("feederSnake/addFeederSnake");
-
+        List<Snake> snakes = snakeDAO.findAll();
+        List<Feeder> feeders = feederDAO.findAll();
+        response.addObject("snakesModelKey", snakes);
+        response.addObject("feedersModelKey", feeders);
+        // query to get all snakes, add to model
+        // query to get all feeders, add to model
+        // on jsp page, loop over both
+        // if not using formBean, can use request param for both id
         return response;
     }
 
@@ -82,8 +93,28 @@ public class FeederSnakeController {
 
         // if have time, add adding successful message
         // use redirect to trigger the next method/function
-        response.setViewName("redirect:/feeder/showFeeders");
+        response.setViewName("redirect:/feederSnake/showFeedings");
         return response;
-
     }
+
+//    @GetMapping(value = "/feederSnake/showFeedings")
+//    public ModelAndView showFeedings(@RequestParam(name = "search", required = false) String search) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        List<FeederSnake> feederSnakes;
+//        // if the search is not blank
+//        if(!StringUtils.isBlank(search)) {
+//            // run these lines
+//            feederSnakes = feederSnakeDAO.findBySpeciesContainingIgnoreCase(search);
+//        } else {
+//            // else, run these
+//            feederSnakes = feederSnakeDAO.findAll();
+//            search = "search feeding by species...";
+//        }
+//        // this line puts the list of users we just queried into the model
+//        // usersModelKey - users: is a key-value pair in a model map
+//        response.addObject("feedingsModel", feederSnakes);
+//
+//        response.addObject("searchTerm", search);
+//        return response;
+//    }
 }
