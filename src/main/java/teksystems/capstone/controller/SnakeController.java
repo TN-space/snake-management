@@ -143,7 +143,6 @@ public class SnakeController {
         log.info("in remove");
         response.setViewName("snake/showSnakes");
 
-//        Boolean isRemoved = snakeDAO
         Snake snake = snakeDAO.findById(snakeId);
         log.info("found snake: " + snake);
         if (snake != null) {

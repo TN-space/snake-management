@@ -57,13 +57,8 @@ public class FeederSnakeController {
             return response;
         }
 
-        log.info("snake id: " + form.getSnakeId());
-        log.info("feeder id: " + form.getFeederId());
-        log.info("the form info : "+ form);
-
         FeederSnake feederSnake = feederSnakeDAO.findById(form.getId());
         if (feederSnake == null) {
-//            // hence, create new user
             feederSnake = new FeederSnake();
         }
 
@@ -77,9 +72,8 @@ public class FeederSnakeController {
             feederSnake.setQuantity(form.getQuantity());
             feeder.setQuantity(feeder.getQuantity() - form.getQuantity());
             feederDAO.save(feeder);
-            log.info("feeder info*** "+feeder);
         } else {
-            
+            response.setViewName("redirect:/feeder/showFeeders");
         }
         snakeDAO.save(snake);
         feederSnakeDAO.save(feederSnake);

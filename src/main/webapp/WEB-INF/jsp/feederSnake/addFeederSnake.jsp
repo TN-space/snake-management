@@ -20,23 +20,18 @@
     <br>
     Quantity fed <input type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
     <br>
-<%--    Status <select name="status" id="statusId">--%>
-<%--    <c:choose>--%>
-<%--        <c:when test="${feederSnakeFormBean.status == 'F/T'}">--%>
-<%--            <option value="F/T">F/T</option>--%>
-<%--            <option value="Live">Live</option>--%>
-<%--        </c:when>--%>
-<%--        <c:otherwise>--%>
-<%--            <option value="Live">Live</option>--%>
-<%--            <option value="F/T">F/T</option>--%>
-<%--        </c:otherwise>--%>
-<%--    </c:choose>--%>
-<%--</select>--%>
-<%--    <br>--%>
-<%--    Quantity <input type="number" name="quantity" id="quantityId" value="${feederSnakeFormBean.quantity}">--%>
-<%--    <br>--%>
-<%--    Image URL <input type="text" name="imgUrl" value="${feederSnakeFormBean.imgUrl}">--%>
-<%--    <br>--%>
+
+<%--    Snake --%>
+<%--    <select name="species" >--%>
+<%--    <option value="">hello</option>--%>
+<%--    <option value="">hi</option>--%>
+<%--    <c:forEach items="${snakesModel}" var="snake">--%>
+<%--        <option value="${snake.species}">${snake.species}</option>--%>
+<%--    </c:forEach>--%>
+
+
+    </select>
+    <br>
     <button type="submit">Submit</button>
 </form>
 

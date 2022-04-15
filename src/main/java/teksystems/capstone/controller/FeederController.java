@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.entity.Feeder;
+import teksystems.capstone.database.entity.Snake;
 import teksystems.capstone.formbean.feeder.AddFeederFormBean;
 
 import javax.validation.Valid;
@@ -130,6 +131,19 @@ public class FeederController {
 
         response.addObject("feederFormBean", form);
 
+        return response;
+    }
+
+    @GetMapping(value = "/feeder/remove/{feederId}")
+    public ModelAndView removeFeeder(@PathVariable("feederId") Integer feederId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("feeder/showFeeders");
+
+        Feeder feeder = feederDAO.findById(feederId);
+        if (feeder != null) {
+            feederDAO.delete(feeder);
+        }
+        response.setViewName("redirect:/feeder/showFeeders");
         return response;
     }
 

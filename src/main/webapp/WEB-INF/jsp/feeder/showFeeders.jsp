@@ -34,6 +34,7 @@
                 <p><b>Quantity:</b> ${feeder.quantity}</p>
             </div>
             <a href="/feeder/edit/${feeder.id}" id="feeder-edit-btn">Edit</a>
+            <a href="/feeder/remove/${feeder.id}" id="feeder-remove-btn">Remove</a>
         </div>
     </c:forEach>
 </div>
