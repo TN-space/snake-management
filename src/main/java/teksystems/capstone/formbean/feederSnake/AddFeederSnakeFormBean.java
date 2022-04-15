@@ -19,9 +19,4 @@ public class AddFeederSnakeFormBean {
 
     private Integer quantity;
 
-    @NotBlank(message = "species name is required")
-    private String species;
-
-    @NotBlank(message = "feeder name is required")
-    private String name;
 }

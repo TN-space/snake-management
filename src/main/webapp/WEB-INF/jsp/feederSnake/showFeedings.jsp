@@ -14,22 +14,22 @@
 <%--    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>--%>
 <%--</form>--%>
 
-<%--<table class="table">--%>
-<%--    <tr>--%>
-<%--        <th>Species</th>--%>
-<%--        <th>Feeder</th>--%>
-<%--        <th>Quantity</th>--%>
-<%--        <th>Action</th>--%>
-<%--    </tr>--%>
-<%--    <c:forEach items="${feederSnakes}" var="feeding">--%>
-<%--        <tr>--%>
-<%--            <td>${feeding.species}</td>--%>
-<%--            <td>${feeding.name}</td>--%>
-<%--            <td>${feeding.quantity}</td>--%>
-<%--            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-<%--</table>--%>
+<table class="table">
+    <tr>
+        <th>Species</th>
+        <th>Feeder</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+    <c:forEach items="${feederSnakes}" var="feeding">
+        <tr>
+            <td>${feeding.species}</td>
+            <td>${feeding.name}</td>
+            <td>${feeding.quantity}</td>
+            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>
+        </tr>
+    </c:forEach>
+</table>
 
     </div>
 </div>

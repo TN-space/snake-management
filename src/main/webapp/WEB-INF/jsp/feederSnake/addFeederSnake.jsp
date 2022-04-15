@@ -12,27 +12,25 @@
 
 <%--method = get to show query after submit, method  is = post before--%>
 <form id="feeder-snake-form" action="/feederSnake/added" method="get">
-    <input type="hidden" name="id" value="${feederSnakeFormBean.id}"><br>
-    <br>
-    Snake species <input type="text" name="species" value="${feederSnakeFormBean.species}">
-    <br>
-    Feeder name <input type="text" name="name"  value="${feederSnakeFormBean.name}">
-    <br>
-    Quantity fed <input type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
-    <br>
-
     Snake
-    <select name="species" >
-    <c:forEach items="${snakesModelKey}" var="snake">
-        <option value="${snake.id}">${snake.species}/${snake.sex}</option>
-    </c:forEach>
-    </select>
-    <br>
-    <select name="species" >
-        <c:forEach items="${feedersModelKey}" var="feeder">
-            <option value="${feeder.id}">${feeder.name}/${feeder.size}/${feeder.quantity}</option>
+    <select name="snakeId" >
+        <option></option>
+        <c:forEach items="${snakesModelKey}" var="snake">
+            <option value="${snake.id}">${snake.species} | ${snake.sex}</option>
         </c:forEach>
     </select>
+    <br>
+    Feeder
+    <select name="feederId" >
+        <option></option>
+        <c:forEach items="${feedersModelKey}" var="feeder">
+            <c:if test = "${feeder.quantity > 0}">
+                <option value="${feeder.id}">${feeder.name} | <b>Size:</b> ${feeder.size} | <b>Availability:</b> ${feeder.quantity}</option>
+            </c:if>
+        </c:forEach>
+    </select>
+    <br>
+    Quantity feeding <input type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
     <br>
     <button type="submit">Submit</button>
 </form>

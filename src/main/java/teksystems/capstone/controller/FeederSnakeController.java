@@ -73,23 +73,25 @@ public class FeederSnakeController {
             feederSnake = new FeederSnake();
         }
 
-        Snake snake = snakeDAO.findSnakeBySpeciesIgnoreCase(form.getSpecies());
-        Feeder feeder = feederDAO.findFeederByNameIgnoreCase(form.getName());
-
-        feederSnake.setId(form.getId());
-        feederSnake.setSnake(snake);
+        Snake snake = snakeDAO.findSnakeById(form.getSnakeId());
+        Feeder feeder = feederDAO.findFeederById(form.getFeederId());
+        log.info("form: "+ form);
+        log.info("snakeId: " + form.getSnakeId());
+        log.info("feederId: " + form.getFeederId());
+        log.info("snake: " + snake);
+        log.info("feeder: " + feeder);
         if (feeder.getQuantity() >= form.getQuantity()) {
             feederSnake.setFeeder(feeder);
             feederSnake.setQuantity(form.getQuantity());
             feeder.setQuantity(feeder.getQuantity() - form.getQuantity());
             feederDAO.save(feeder);
+            feederSnake.setId(form.getId());
+            feederSnake.setSnake(snake);
+            snakeDAO.save(snake);
+            feederSnakeDAO.save(feederSnake);
         } else {
-            response.setViewName("redirect:/feeder/showFeeders");
+//            response.setViewName("redirect:/feeder/showFeeders");
         }
-        snakeDAO.save(snake);
-        feederSnakeDAO.save(feederSnake);
-        log.info("snake info*** "+snake);
-        log.info("feederSnake info*** "+feederSnake);
 
         // if have time, add adding successful message
         // use redirect to trigger the next method/function
