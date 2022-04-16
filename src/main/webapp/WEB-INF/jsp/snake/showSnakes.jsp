@@ -15,7 +15,7 @@
 </form>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<div id="snakes-container" class="container">
+<div id="snakes-container" class="snake-container">
     <h1></h1>
 
     <div class="grid" >
@@ -35,17 +35,20 @@
                         </c:choose>
                     </div>
                     <h2 class="card-title">${snake.species}</h2>
-                    <p class="card-detail">
+                    <div class="card-detail">
 <%--                        <c:forEach items="${ages}" var="age">--%>
 <%--                            <b>Age: </b>${age}<br>--%>
 <%--                        </c:forEach>--%>
                         <b>Sex: </b>${snake.sex}<br>
                         <b>Birthday: </b>${snake.birthDate}<br>
                         <b>Note: </b>${snake.note}<br>
-                    </p>
+                        <div class="card-control">
+                            <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
+                            <a href="/snake/remove/${snake.id}" id="snake-remove-btn">Remove</a>
+                        </div>
+                    </div>
+
                 </div>
-                <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
-                <a href="/snake/remove/${snake.id}" id="snake-remove-btn">Remove</a>
 <%--                <form action="/snake/remove/${snake.id}">--%>
 <%--                    <button id="snake-remove-btn">Remove</button>--%>
 <%--                </form>--%>

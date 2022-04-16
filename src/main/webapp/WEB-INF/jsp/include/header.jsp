@@ -19,33 +19,33 @@
 
 <div class="container">
 
-    <a href="/index">Index</a> &nbsp;
-
-    <sec:authorize access="!isAuthenticated()">
-        <a href="/login/login">Login</a>&nbsp;
-        <a href="/user/register">Sign up</a> &nbsp;
-    </sec:authorize>
-
-    <sec:authorize access="isAuthenticated()">
-        <a href="/snake/add">Add Snake</a> &nbsp;
-        <a href="/snake/showSnakes">Show Snakes</a> &nbsp;
-        <a href="/feeder/add">Add Feeder</a> &nbsp;
-        <a href="/feeder/showFeeders">Show Feeders</a> &nbsp;
-        <a href="/feederSnake/add">Add Feeding</a> &nbsp;
-        <a href="/login/logout">Logout</a>&nbsp;
-        <div class="authAs">
-            authenticated as <sec:authentication property="principal.username" />
+    <nav class="navi">
+        <div class="navi__container">
+            <ul class="navi__ul">
+                <li class="navi__li"><a href="/index">Index</a></li>
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="navi__li"><a href="/login/login">Login</a></li>
+                    <li class="navi__li"><a href="/user/register">Sign up</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li class="navi__li"><a href="/snake/add">Add Snake</a> </li>
+                    <li class="navi__li"><a href="/snake/showSnakes">Show Snakes</a></li>
+                    <li class="navi__li"><a href="/feeder/add">Add Feeder</a></li>
+                    <li class="navi__li"><a href="/feeder/showFeeders">Show Feeders</a></li>
+                    <li class="navi__li"><a href="/feederSnake/add">Add Feeding</a> </li>
+                </sec:authorize>
+            </ul>
+            <sec:authorize access="hasAuthority('USER')">
+                <ul class="navi__admin">
+                    <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>
+                    <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>
+                </ul>
+            </sec:authorize>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>
+                <li class="navi__li--admin"><a href="/user/search">Search</a></li>
+                <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>
+            </sec:authorize>
         </div>
-
-    </sec:authorize>
-
-
-    <sec:authorize access="hasAuthority('ADMIN')">
-        <a href="/user/search">Search</a>&nbsp;
-        authenticated as <sec:authentication property="principal.username" />
-    </sec:authorize>
-<%--    <a href="/user/search">Search</a>--%>
-    <hr>
-
-
+    </nav>
 
