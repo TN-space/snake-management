@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../pub/css/snake/showSnakes.css">
     <link rel="stylesheet" href="../../../pub/css/feeder/showFeeders.css">
+    <link rel="stylesheet" href="../../../pub/css/header/header.css">
     <script src="https://kit.fontawesome.com/2c911235fd.js" crossorigin="anonymous"></script>
     <title>Snake Management</title>
 </head>
@@ -32,11 +33,16 @@
         <a href="/feeder/showFeeders">Show Feeders</a> &nbsp;
         <a href="/feederSnake/add">Add Feeding</a> &nbsp;
         <a href="/login/logout">Logout</a>&nbsp;
-    authenticated as <sec:authentication property="principal.username" />
+        <div class="authAs">
+            authenticated as <sec:authentication property="principal.username" />
+        </div>
+
     </sec:authorize>
+
 
     <sec:authorize access="hasAuthority('ADMIN')">
         <a href="/user/search">Search</a>&nbsp;
+        authenticated as <sec:authentication property="principal.username" />
     </sec:authorize>
 <%--    <a href="/user/search">Search</a>--%>
     <hr>

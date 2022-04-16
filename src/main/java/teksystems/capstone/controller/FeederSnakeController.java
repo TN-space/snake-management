@@ -76,14 +76,16 @@ public class FeederSnakeController {
         Snake snake = snakeDAO.findSnakeById(form.getSnakeId());
         Feeder feeder = feederDAO.findFeederById(form.getFeederId());
         log.info("form: "+ form);
-        log.info("snakeId: " + form.getSnakeId());
-        log.info("feederId: " + form.getFeederId());
         log.info("snake: " + snake);
         log.info("feeder: " + feeder);
-        if (feeder.getQuantity() >= form.getQuantity()) {
+
+        Integer defaultQuantity = form.getQuantity();
+        if (defaultQuantity == null) defaultQuantity = 1;
+
+        if (feeder.getQuantity() >= defaultQuantity) {
             feederSnake.setFeeder(feeder);
-            feederSnake.setQuantity(form.getQuantity());
-            feeder.setQuantity(feeder.getQuantity() - form.getQuantity());
+            feederSnake.setQuantity(defaultQuantity);
+            feeder.setQuantity(feeder.getQuantity() - defaultQuantity);
             feederDAO.save(feeder);
             feederSnake.setId(form.getId());
             feederSnake.setSnake(snake);
