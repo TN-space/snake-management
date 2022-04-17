@@ -13,6 +13,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.UserDAO;
+import teksystems.capstone.database.dao.UserRoleDAO;
 import teksystems.capstone.database.entity.User;
 import teksystems.capstone.database.entity.UserRole;
 import teksystems.capstone.formbean.user.RegisterFormBean;
@@ -26,6 +27,9 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private UserRoleDAO userRoleDAO;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -88,6 +92,7 @@ public class UserController {
         UserRole userRole = new UserRole();
         userRole.setUserId(user.getId());
         userRole.setUserRole("USER");
+        userRoleDAO.save(userRole);
 
         log.info("userRole info: "+userRole);
 

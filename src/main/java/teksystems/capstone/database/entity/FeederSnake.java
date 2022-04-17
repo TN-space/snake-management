@@ -4,6 +4,7 @@ package teksystems.capstone.database.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -28,6 +29,10 @@ public class FeederSnake {
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "feeding_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date feedingDate = new Date();
 
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
