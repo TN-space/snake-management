@@ -15,7 +15,7 @@
 </form>
 
 <%--method = get to show query after submit, method  is = post before --%>
-<div id="snakes-container" class="snake-container">
+<div id="snakes-container-id" class="snake-container">
     <h1></h1>
 
     <div class="grid" >
@@ -82,7 +82,7 @@
 
 <script>
     $('#snake-edit-btn').click(function(){
-        $('#snakes-container').hide();
+        $('#snakes-container-id').hide();
         $('#snake-form').show();
     })
 </script>
