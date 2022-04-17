@@ -33,6 +33,7 @@ input {
     width:300px;
     border:none;
     border-bottom:1px solid #757575;
+    margin-left: 100px;
 }
 input:focus{ outline:none; }
 
@@ -58,7 +59,12 @@ input:focus ~ label{
 }
 
 /* BOTTOM BARS ================================= */
-.bar { position:relative; display:block; width:300px; }
+.bar {
+    position:relative;
+    display:block;
+    width:300px;
+    margin-left: 100px
+}
 .bar:before, .bar:after{
     content:'';
     height:2px;
@@ -124,5 +130,5 @@ input:focus ~ .highlight {
     border: 0.5px dotted #8799de;
 }
 .submit-btn:hover{
-    /*background-color: #8799de;*/
+    background-color: #aebcf5;
 }
