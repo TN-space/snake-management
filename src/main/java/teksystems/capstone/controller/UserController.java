@@ -50,11 +50,10 @@ public class UserController {
      * otherwise spring MVC will not be able to respond to the request
      * */
     /*This code now can do a create or update depending on if the id is already populated or null*/
-    @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
-
+        log.info("form info: "+form);
 //        int i = 10/0;
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
@@ -84,12 +83,13 @@ public class UserController {
         String password = passwordEncoder.encode(form.getPassword());
         user.setPassword(password);
         userDAO.save(user);
+        log.info("user info: "+user);
 
         UserRole userRole = new UserRole();
         userRole.setUserId(user.getId());
         userRole.setUserRole("USER");
 
-        log.info(form.toString());
+        log.info("userRole info: "+userRole);
 
         // here want to redirect to the edit page
         // the edit page will then be responsible for loading the user from database
