@@ -35,6 +35,11 @@ public class Feeder {
     @Column(name = "image_url")
     private String imgUrl;
 
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+    private User user;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy = "feeder", fetch = FetchType.LAZY)

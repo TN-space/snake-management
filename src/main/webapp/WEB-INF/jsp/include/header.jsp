@@ -38,18 +38,22 @@
                     </sec:authorize>
                 </ul>
 
+                    <sec:authorize access="isAuthenticated()">
+                <ul class="navi__admin">
+                    <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>
                 <sec:authorize access="hasAuthority('USER')">
-                    <ul class="navi__admin">
-                        <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>
+
                         <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>
-                    </ul>
+<%--                    </ul>--%>
                 </sec:authorize>
                 <sec:authorize access="hasAuthority('ADMIN')">
-                    <ul class="navi__admin">
-                        <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>
+<%--                    <ul class="navi__admin">--%>
+<%--                        <li class="navi__li--admin">welcome <sec:authentication property="principal.username" /></li>--%>
                         <li class="navi__li--admin"><a href="/user/search">Search</a></li>
-                        <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>
-                    </ul>
+<%--                        <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>--%>
+
+                </sec:authorize>
+                </ul>
                 </sec:authorize>
             </div>
         </nav>

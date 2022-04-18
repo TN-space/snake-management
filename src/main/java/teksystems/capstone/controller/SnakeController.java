@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -11,7 +13,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.SnakeDAO;
+import teksystems.capstone.database.dao.UserDAO;
 import teksystems.capstone.database.entity.Snake;
+import teksystems.capstone.database.entity.User;
 import teksystems.capstone.formbean.snake.AddSnakeFormBean;
 
 import javax.validation.Valid;
@@ -21,6 +25,9 @@ import java.util.List;
 @Controller
 @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class SnakeController {
+
+    @Autowired
+    private UserDAO userDAO;
 
     @Autowired
     private SnakeDAO snakeDAO;
@@ -37,7 +44,7 @@ public class SnakeController {
     @RequestMapping(value = "/snake/added", method = {RequestMethod.GET})
     public ModelAndView snakeAdded(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
-        log.info("snake id in Added: "+ form.getId());
+
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
@@ -73,12 +80,20 @@ public class SnakeController {
 //        ages.add(age);
 //        response.addObject("ages", ages);
 
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDAO.findByEmail(username);
+        log.info("user in add: "+user);
+        snake.setUserId(user.getId());
+
         snake.setSpecies(form.getSpecies());
         snake.setSex(form.getSex());
         snake.setBirthDate(form.getBirthDate());
         snake.setNote(form.getNote());
         snake.setImgUrl(form.getImgUrl());
 
+        log.info("snake before save: "+ snake);
         snakeDAO.save(snake);
 
 //        HashMap<Integer, Snake> map = new HashMap<>();

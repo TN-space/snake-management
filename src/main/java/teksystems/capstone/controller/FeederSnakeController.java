@@ -104,6 +104,8 @@ public class FeederSnakeController {
 //    @GetMapping(value = "/feederSnake/showFeedings")
 //    public ModelAndView showFeedings(@RequestParam(name = "search", required = false) String search) throws Exception {
 //        ModelAndView response = new ModelAndView();
+//
+//        //write query in sql to select everything I need
 //        List<FeederSnake> feederSnakes;
 //        // if the search is not blank
 //        if(!StringUtils.isBlank(search)) {
