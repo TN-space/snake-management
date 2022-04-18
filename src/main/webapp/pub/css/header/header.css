@@ -183,6 +183,8 @@ table {
     text-decoration: none;
     color: #003d5c;
     transition: 0.3s all ease-in-out;
+    font-size: 1.3em;
+    font-weight: bold;
 }
 .navi__li a:hover {
      color: #009cc7;

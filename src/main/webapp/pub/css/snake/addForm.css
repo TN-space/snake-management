@@ -1,0 +1,32 @@
+
+
+.add-form-container{
+    /*font-family:'Roboto';*/
+    width:400px;
+    margin:30px 55px ;
+    display:block;
+    background:#FFF;
+    padding:10px 50px 50px;
+    text-align: -webkit-center;
+}
+.add-selection{
+    /*same styling as input tag, except width*/
+    font-size:18px;
+    padding:8px 10px 10px 5px;
+    display:block;
+    width:200px;
+    border:none;
+    border-bottom:1px solid #757575;
+    margin-left: 50px;
+}
+.add-input {
+    width: 200px;
+}
+.add-bar{
+    width: 200px;
+}
+.add-label{
+    color: #003d5c;
+    opacity: 0.9;
+    font-weight: bold;
+}

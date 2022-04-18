@@ -27,6 +27,7 @@ h3{
     margin-bottom:45px;
 }
 input {
+    /*same styling as .add-selection, except width*/
     font-size:18px;
     padding:8px 10px 10px 5px;
     display:block;
