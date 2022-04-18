@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -11,8 +13,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
+import teksystems.capstone.database.dao.UserDAO;
 import teksystems.capstone.database.entity.Feeder;
 import teksystems.capstone.database.entity.Snake;
+import teksystems.capstone.database.entity.User;
 import teksystems.capstone.formbean.feeder.AddFeederFormBean;
 
 import javax.validation.Valid;
@@ -22,6 +26,9 @@ import java.util.List;
 @Controller
 @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class FeederController {
+
+    @Autowired
+    private UserDAO userDAO;
 
     @Autowired
     private FeederDAO feederDAO;
@@ -73,12 +80,21 @@ public class FeederController {
 //        List<String> ages = new ArrayList<>();
 //        ages.add(age);
 //        response.addObject("ages", ages);
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((UserDetails) principal).getUsername();
+
+        User user = userDAO.findByEmail(username);
+        log.info("user in add: "+user);
+        feeder.setUserId(user.getId());
+
         feeder.setName(form.getName());
         feeder.setSize(form.getSize());
         feeder.setStatus(form.getStatus());
         feeder.setQuantity(form.getQuantity());
         feeder.setImgUrl(form.getImgUrl());
 
+        log.info("feeder before save: "+feeder);
         feederDAO.save(feeder);
 
 //        HashMap<Integer, Snake> map = new HashMap<>();

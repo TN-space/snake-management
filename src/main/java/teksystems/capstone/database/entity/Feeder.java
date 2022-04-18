@@ -40,6 +40,9 @@ public class Feeder {
     @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
     private User user;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @OneToMany(mappedBy = "feeder", fetch = FetchType.LAZY)

@@ -37,6 +37,4 @@ public class AddSnakeFormBean {
 
     private String imgUrl;
 
-    private Integer userId;
-
 }
