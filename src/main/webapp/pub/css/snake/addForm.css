@@ -1,13 +1,15 @@
 
-
 .add-form-container{
     /*font-family:'Roboto';*/
     width:400px;
-    margin:30px 55px ;
+    margin:10px 45px ;
     display:block;
     background:#FFF;
     padding:10px 50px 50px;
     text-align: -webkit-center;
+}
+.h3-add{
+    margin-bottom: 10px;
 }
 .add-selection{
     /*same styling as input tag, except width*/

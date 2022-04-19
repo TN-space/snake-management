@@ -101,26 +101,31 @@ public class FeederSnakeController {
         return response;
     }
 
-//    @GetMapping(value = "/feederSnake/showFeedings")
-//    public ModelAndView showFeedings(@RequestParam(name = "search", required = false) String search) throws Exception {
-//        ModelAndView response = new ModelAndView();
-//
-//        //write query in sql to select everything I need
-//        List<FeederSnake> feederSnakes;
-//        // if the search is not blank
-//        if(!StringUtils.isBlank(search)) {
-//            // run these lines
+    @GetMapping(value = "/feederSnake/showFeedings")
+    public ModelAndView showFeedings(@RequestParam(name = "search", required = false) String search) throws Exception {
+        ModelAndView response = new ModelAndView();
+
+        //write query in sql to select everything I need
+        List<FeederSnake> feederSnakes;
+        // if the search is not blank
+        if(!StringUtils.isBlank(search)) {
+            // run these lines
 //            feederSnakes = feederSnakeDAO.findBySpeciesContainingIgnoreCase(search);
-//        } else {
-//            // else, run these
+        } else {
+            // else, run these
 //            feederSnakes = feederSnakeDAO.findAll();
-//            search = "search feeding by species...";
-//        }
-//        // this line puts the list of users we just queried into the model
-//        // usersModelKey - users: is a key-value pair in a model map
-//        response.addObject("feedingsModel", feederSnakes);
-//
-//        response.addObject("searchTerm", search);
-//        return response;
-//    }
+            search = "search feeding by species...";
+        }
+        // this line puts the list of users we just queried into the model
+        // usersModelKey - users: is a key-value pair in a model map
+        feederSnakes = feederSnakeDAO.findAllFeedings();
+
+        for (FeederSnake x:feederSnakes) {
+            log.info("log every feederSnake: "+x);
+        }
+        response.addObject("feedingsModel", feederSnakes);
+
+        response.addObject("searchTerm", search);
+        return response;
+    }
 }
