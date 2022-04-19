@@ -32,8 +32,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    @EqualsAndHashCode.Exclude
-//    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Column(name = "create_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createDate = new Date();
