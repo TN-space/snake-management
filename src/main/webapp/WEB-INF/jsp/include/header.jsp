@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../../pub/css/user/form.css">
     <link rel="stylesheet" href="../../../pub/css/user/login.css">
     <link rel="stylesheet" href="../../../pub/css/snake/addForm.css">
+    <link rel="stylesheet" href="../../../pub/css/feederSnake/addFeeding.css">
     <link rel="stylesheet" href="../../../pub/css/snake/showSnakes.css">
     <link rel="stylesheet" href="../../../pub/css/feeder/showFeeders.css">
     <script src="https://kit.fontawesome.com/2c911235fd.js" crossorigin="anonymous"></script>

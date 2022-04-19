@@ -1,0 +1,19 @@
+
+.add-selection-long{
+    font-size:18px;
+    padding:8px 10px 10px 5px;
+    display:block;
+    width:300px;
+    border:none;
+    border-bottom:1px solid #757575;
+    margin-left: 200px;
+}
+.add-input-long{
+    margin-left: 200px;
+}
+.long-margin{
+    margin-left: 10px;
+}
+.bar-long{
+    margin-left: 200px;
+}

@@ -10,78 +10,77 @@
         <c:otherwise><h3 class="h3-add">Add Feeder</h3></c:otherwise>
     </c:choose>
 
-<%--method = get to show query after submit, method  is = post before --%>
-<form id="feeder-form" action="/feeder/added" method="get">
-    <input type="hidden" name="id" value="${feederFormBean.id}"><br>
-    <div class="group">
-        <input class="add-input" type="text" name="name" id="nameId" value="${feederFormBean.name}">
-        <span class="highlight"></span>
-        <span class="bar add-bar"></span>
-        <label class="add-label">Name</label>
-        <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
-    </div>
-    <div class="group">
-        <input class="add-input" type="text" name="size" id="sizeId" value="${feederFormBean.size}">
-        <span class="highlight"></span>
-        <span class="bar add-bar"></span>
-        <label class="add-label">Size</label>
-        <c:forEach items="${bindingResult.getFieldErrors('size')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
-    </div>
-    <div class="group">
-        <label class="add-label">Status</label>
-        <select class="add-selection" name="status" id="statusId">
-            <c:choose>
-                <c:when test="${feederFormBean.status == 'F/T'}">
-                    <option value="F/T">F/T</option>
-                    <option value="Live">Live</option>
-                </c:when>
-                <c:otherwise>
-                    <option value="Live">Live</option>
-                    <option value="F/T">F/T</option>
-                </c:otherwise>
-            </c:choose>
+    <%--method = get to show query after submit, method  is = post before --%>
+    <form id="feeder-form" action="/feeder/added" method="get">
+        <input type="hidden" name="id" value="${feederFormBean.id}"><br>
+        <div class="group">
+            <input class="add-input" type="text" name="name" id="nameId" value="${feederFormBean.name}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <c:forEach items="${bindingResult.getFieldErrors('status')}" var="error">
+            <label class="add-label">Name</label>
+            <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
                 </div>
             </c:forEach>
-        </select>
-    </div>
-    <div class="group">
-        <input class="add-input" type="number" name="quantity" id="quantityId" value="${feederFormBean.quantity}">
-        <span class="highlight"></span>
-        <span class="bar add-bar"></span>
-        <label class="add-label">Quantity</label>
-        <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
-    </div>
-    <div class="group">
-        <input class="add-input" type="text" name="imgUrl" id="imgUrlId" value="${feederFormBean.imgUrl}">
-        <span class="highlight"></span>
-        <span class="bar add-bar"></span>
-        <label class="add-label">Image URL</label>
-        <c:forEach items="${bindingResult.getFieldErrors('imgUrl')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
-    </div>
-    <button class="submit-btn" type="submit">Submit</button>
-</form>
-
+        </div>
+        <div class="group">
+            <input class="add-input" type="text" name="size" id="sizeId" value="${feederFormBean.size}">
+            <span class="highlight"></span>
+            <span class="bar add-bar"></span>
+            <label class="add-label">Size</label>
+            <c:forEach items="${bindingResult.getFieldErrors('size')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+        </div>
+        <div class="group">
+            <label class="add-label">Status</label>
+            <select class="add-selection" name="status" id="statusId">
+                <c:choose>
+                    <c:when test="${feederFormBean.status == 'F/T'}">
+                        <option value="F/T">F/T</option>
+                        <option value="Live">Live</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="Live">Live</option>
+                        <option value="F/T">F/T</option>
+                    </c:otherwise>
+                </c:choose>
+                <span class="highlight"></span>
+                <span class="bar add-bar"></span>
+                <c:forEach items="${bindingResult.getFieldErrors('status')}" var="error">
+                    <div style="color: red;">
+                            ${error.getDefaultMessage()}
+                    </div>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="group">
+            <input class="add-input" type="number" name="quantity" id="quantityId" value="${feederFormBean.quantity}">
+            <span class="highlight"></span>
+            <span class="bar add-bar"></span>
+            <label class="add-label">Quantity</label>
+            <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+        </div>
+        <div class="group">
+            <input class="add-input" type="text" name="imgUrl" id="imgUrlId" value="${feederFormBean.imgUrl}">
+            <span class="highlight"></span>
+            <span class="bar add-bar"></span>
+            <label class="add-label">Image URL</label>
+            <c:forEach items="${bindingResult.getFieldErrors('imgUrl')}" var="error">
+                <div style="color: red;">
+                        ${error.getDefaultMessage()}
+                </div>
+            </c:forEach>
+        </div>
+        <button class="submit-btn" type="submit">Submit</button>
+    </form>
 </div>
 
 <jsp:include page="../include/footer.jsp" />
