@@ -52,7 +52,7 @@ public class FeederController {
 
             // if there is one or more errors we don't want to continue with the creating process,
             // and show register.jsp page
-            response.setViewName("feeder/added");
+            response.setViewName("feeder/addFeeder");
             return response;
         }
 

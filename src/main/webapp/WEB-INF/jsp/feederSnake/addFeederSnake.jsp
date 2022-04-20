@@ -28,6 +28,11 @@
                 <option value="${snake.id}">${snake.species} | ${snake.sex}</option>
             </c:forEach>
         </select>
+        <c:forEach items="${bindingResult.getFieldErrors('snakeId')}" var="error">
+            <div style="color: red; margin-left: 130px;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
     </div>
     <div class="group">
         <label class="form-label add-label long-margin">Feeder</label>
@@ -39,17 +44,22 @@
                 </c:if>
             </c:forEach>
         </select>
+        <c:forEach items="${bindingResult.getFieldErrors('feederId')}" var="error">
+            <div style="color: red; margin-left: 130px;">
+                    ${error.getDefaultMessage()}
+            </div>
+        </c:forEach>
     </div>
     <div class="group">
         <input class="add-input-long" type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
         <span class="highlight"></span>
         <span class="bar bar-long"></span>
         <label class="form-label add-label long-margin">Feeding Quantity</label>
-        <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">
-            <div style="color: red;">
-                    ${error.getDefaultMessage()}
-            </div>
-        </c:forEach>
+<%--        <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">--%>
+<%--            <div style="color: red;">--%>
+<%--                    ${error.getDefaultMessage()}--%>
+<%--            </div>--%>
+<%--        </c:forEach>--%>
     </div>
     <button class="submit-btn" type="submit">Submit</button>
 </form>

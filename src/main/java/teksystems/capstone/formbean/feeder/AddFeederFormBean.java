@@ -19,8 +19,10 @@ public class AddFeederFormBean {
     @NotBlank(message = "feeder name is required")
     private String name;
 
+    @NotBlank(message = "feeder size is required")
     private String size;
 
+    @NotBlank(message = "feeder status is required")
     private String status;
 
     private Integer quantity;

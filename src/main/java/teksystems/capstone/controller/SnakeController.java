@@ -53,7 +53,7 @@ public class SnakeController {
 
             // if there is one or more errors we don't want to continue with the creating process,
             // and show register.jsp page
-            response.setViewName("snake/added");
+            response.setViewName("snake/addSnake");
             return response;
         }
 

@@ -22,19 +22,19 @@ public class RegisterFormBean {
 
     //Error checking seems to behave like if/else, check one by one in order
     // then show the first error message it encounters in browser, but show all error messages in console
-    @NotBlank(message = "Email is required")
-    @Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}", message = "Email format invalid, regex")
+    @NotBlank(message = "email is required")
+    @Pattern(regexp = "[a-z0-9]+@[a-z]+\\.[a-z]{2,3}", message = "email format invalid, regex")
 //    @EmailUnique(message = "Email already existed in database")
-    @Email(message = "Email is invalid, @Email")
+    @Email(message = "email is invalid, @Email")
     private String email;
 
-    @NotBlank(message = "Fist name is required")
+    @NotBlank(message = "first name is required")
     private String firstName;
 
-    @NotBlank(message = "Last name is required")
+    @NotBlank(message = "last name is required")
     private String lastName;
 
-    @NotBlank(message = "Password is required")
+    @NotBlank(message = "password is required")
     @Length(min = 3, max = 15, message = "Password must be between 3 and 15 characters")
     private String password;
 

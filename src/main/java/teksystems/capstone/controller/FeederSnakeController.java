@@ -64,7 +64,7 @@ public class FeederSnakeController {
 
             // if there is one or more errors we don't want to continue with the creating process,
             // and show register.jsp page
-            response.setViewName("feederSnake/added");
+            response.setViewName("feederSnake/addFeederSnake");
             return response;
         }
 
