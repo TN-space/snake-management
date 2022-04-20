@@ -127,6 +127,30 @@ body {
     -webkit-margin-after: 0;
     margin-block-end: 0;
 }
+/*===dropdown menu for snake,feeder,feeeding Start===*/
+nav ul ul {
+    display: none;
+    position: absolute;
+    /*top: 60px; !* the height of the main nav *!*/
+}
+nav ul li:hover > ul {
+    display:inherit;
+}
+nav ul ul li {
+    width:170px;
+    float:none;
+    display:list-item;
+    position: relative;
+}
+nav ul ul ul li {
+    position: relative;
+    top:-60px;
+    left:170px;
+}
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+/*===dropdown menu for snake,feeder,feeeding End===*/
+
 ol,
 ul {
     list-style: none;
@@ -174,7 +198,7 @@ table {
     padding: 0;
 }
 .navi__li {
-    margin: 10px 14px 8px 0;
+    margin: 10px 30px 8px 0;
     font-size: 16px;
     font-weight: 500;
     list-style: none;

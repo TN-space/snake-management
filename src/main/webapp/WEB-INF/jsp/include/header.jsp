@@ -31,12 +31,26 @@
                         <li class="navi__li"><a href="/user/register">Sign up</a></li>
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
-                        <li class="navi__li"><a href="/snake/add">Add Snake</a> </li>
-                        <li class="navi__li"><a href="/snake/showSnakes">Show Snakes</a></li>
-                        <li class="navi__li"><a href="/feeder/add">Add Feeder</a></li>
-                        <li class="navi__li"><a href="/feeder/showFeeders">Show Feeders</a></li>
-                        <li class="navi__li"><a href="/feederSnake/add">Add Feeding</a></li>
-                        <li class="navi__li"><a href="/feederSnake/showFeedings">Show Feedings</a></li>
+                        <li class="navi__li"><a href="#">Snake</a>
+                            <ul>
+                                <li class="navi__li"><a href="/snake/add">Add Snake</a> </li>
+                                <li class="navi__li"><a href="/snake/showSnakes">Show Snakes</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="navi__li"><a href="#">Feeder</a>
+                            <ul>
+                                <li class="navi__li"><a href="/feeder/add">Add Feeder</a></li>
+                                <li class="navi__li"><a href="/feeder/showFeeders">Show Feeders</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="navi__li"><a href="#">Feeding</a>
+                            <ul>
+                                <li class="navi__li"><a href="/feederSnake/add">Add Feeding</a></li>
+                                <li class="navi__li"><a href="/feederSnake/showFeedings">Show Feedings</a></li>
+                            </ul>
+                        </li>
                     </sec:authorize>
                 </ul>
 
