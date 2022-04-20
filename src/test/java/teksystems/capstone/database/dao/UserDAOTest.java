@@ -53,7 +53,7 @@ public class UserDAOTest {
 
     @Test
     @Order(3)
-    public void updateUser() {
+    public void updateUserTest() {
         User user = userDAO.findById(1);
         user.setFirstName("Eriko");
 
@@ -64,7 +64,7 @@ public class UserDAOTest {
 
     @Test
     @Order(4)
-    public void deleteUser() {
+    public void deleteUserTest() {
         User user = userDAO.findById(2);
         List<UserRole> roles = userRoleDAO.findByUserId(2);
 

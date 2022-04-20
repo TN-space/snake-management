@@ -18,9 +18,9 @@ public interface FeederSnakeDAO extends JpaRepository<FeederSnake, Long> {
             "where fs.feeder_id=f.id and fs.snake_id = s.id", nativeQuery = true)
     List<FeederSnake> findAllFeedings();
 
+    List<FeederSnake> findAllById(@Param("id") Integer id);
 
-
-//    List<FeederSnake> findBySpeciesContainingIgnoreCase(@Param("species") String species);
+    //    List<FeederSnake> findBySpeciesContainingIgnoreCase(@Param("species") String species);
 
     //    List<FeederSnake>
 

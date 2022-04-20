@@ -29,8 +29,9 @@ public class Snake {
     @Column(name = "note")
     private String note;
 
-//    @EqualsAndHashCode.Exclude
-//    @ToString.Exclude
+    // having this doesn't exclude birthDate for create method for Junit testing
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
@@ -43,6 +44,7 @@ public class Snake {
     @Column(name = "image_url")
     private String imgUrl;
 
+    @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
