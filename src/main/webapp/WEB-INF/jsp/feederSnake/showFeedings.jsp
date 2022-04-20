@@ -16,13 +16,15 @@
 
 <table class="table">
     <tr>
+        <th>Feeding Date</th>
         <th>Species</th>
         <th>Feeder</th>
         <th>Quantity</th>
         <th>Action</th>
     </tr>
-    <c:forEach items="${feederSnakes}" var="feeding">
+    <c:forEach items="${feedingsModel}" var="feeding">
         <tr>
+            <td>${feeding.feeding_date}</td>
             <td>${feeding.species}</td>
             <td>${feeding.name}</td>
             <td>${feeding.quantity}</td>

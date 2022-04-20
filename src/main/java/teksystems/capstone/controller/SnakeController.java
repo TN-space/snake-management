@@ -121,6 +121,7 @@ public class SnakeController {
             snakes = snakeDAO.findAll();
             search = "search animal...";
         }
+//        snakes.forEach((x)->log.info(""+x));
         // this line puts the list of users we just queried into the model
         // usersModelKey - users: is a key-value pair in a model map
         response.addObject("snakesModel", snakes);

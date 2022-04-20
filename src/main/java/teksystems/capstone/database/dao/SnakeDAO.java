@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public interface SnakeDAO extends JpaRepository<Snake, Long> {
+
     Snake findById(@Param("id") Integer id);
 
     Snake findSnakeById(@Param("id") Integer id);

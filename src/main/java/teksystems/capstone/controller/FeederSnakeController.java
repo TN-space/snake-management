@@ -23,6 +23,7 @@ import teksystems.capstone.formbean.feederSnake.AddFeederSnakeFormBean;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -106,7 +107,7 @@ public class FeederSnakeController {
         ModelAndView response = new ModelAndView();
 
         //write query in sql to select everything I need
-        List<FeederSnake> feederSnakes;
+        List<Map<String, Object>> feederSnakes;
         // if the search is not blank
         if(!StringUtils.isBlank(search)) {
             // run these lines
@@ -120,7 +121,7 @@ public class FeederSnakeController {
         // usersModelKey - users: is a key-value pair in a model map
         feederSnakes = feederSnakeDAO.findAllFeedings();
 
-        for (FeederSnake x:feederSnakes) {
+        for (Map<String,Object> x:feederSnakes) {
             log.info("log every feederSnake: "+x);
         }
         response.addObject("feedingsModel", feederSnakes);

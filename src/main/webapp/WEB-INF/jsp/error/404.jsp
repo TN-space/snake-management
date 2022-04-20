@@ -23,8 +23,7 @@
         transform-box: fill-box;
     }
     /*************swing************/
-    @
-    keyframes swing { 0% {
+    @keyframes swing { 0% {
         transform: rotate(10deg);
     }
     100
@@ -38,8 +37,7 @@
     }
     }
     /*************swing hair************/
-    @
-    keyframes swinghair { 0% {
+    @keyframes swinghair { 0% {
         transform: rotate(6deg);
     }
     100
