@@ -61,7 +61,7 @@
                             <li class="navi__li--admin"><a href="/login/logout">Logout</a></li>
 <%--                    </sec:authorize>--%>
                     <sec:authorize access="hasAuthority('ADMIN')">
-                            <li class="navi__li--admin"><a href="/user/search">Search</a></li>
+                            <li class="navi__li--admin"><a href="/user/search">Admin</a></li>
                     </sec:authorize>
                     </ul>
                 </sec:authorize>

@@ -80,11 +80,11 @@
     </div>
 </div>
 
-<script>
-    $('#snake-edit-btn').click(function(){
-        $('#snakes-container-id').hide();
-        $('#snake-form').show();
-    })
-</script>
+<%--<script>--%>
+<%--    $('#snake-edit-btn').click(function(){--%>
+<%--        $('#snakes-container-id').hide();--%>
+<%--        $('#snake-form').show();--%>
+<%--    })--%>
+<%--</script>--%>
 
 <jsp:include page="../include/footer.jsp" />

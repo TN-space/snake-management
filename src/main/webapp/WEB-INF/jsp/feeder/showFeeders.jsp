@@ -40,11 +40,11 @@
 </div>
 
 
-<script>
-    $('#feeder-edit-btn').click(function(){
-        $('#feeders-container').hide();
-        $('#feeder-form').show();
-    })
-</script>
+<%--<script>--%>
+<%--    $('#feeder-edit-btn').click(function(){--%>
+<%--        $('#feeders-container').hide();--%>
+<%--        $('#feeder-form').show();--%>
+<%--    })--%>
+<%--</script>--%>
 
 <jsp:include page="../include/footer.jsp" />
