@@ -21,7 +21,7 @@
 <form id="feeder-snake-form" action="/feederSnake/added" method="get">
     <input type="hidden" name="id" value="${formBean.id}">
     <div class="group">
-        <label class="add-label long-margin">Snake</label>
+        <label class="form-label add-label long-margin">Snake</label>
         <select class="add-selection-long" name="snakeId" >
             <option></option>
             <c:forEach items="${snakesModelKey}" var="snake">
@@ -30,7 +30,7 @@
         </select>
     </div>
     <div class="group">
-        <label class="add-label long-margin">Feeder</label>
+        <label class="form-label add-label long-margin">Feeder</label>
         <select class="add-selection-long" name="feederId" >
             <option></option>
             <c:forEach items="${feedersModelKey}" var="feeder">
@@ -44,7 +44,7 @@
         <input class="add-input-long" type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
         <span class="highlight"></span>
         <span class="bar bar-long"></span>
-        <label class="add-label long-margin">Feeding Quantity</label>
+        <label class="form-label add-label long-margin">Feeding Quantity</label>
         <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">
             <div style="color: red;">
                     ${error.getDefaultMessage()}

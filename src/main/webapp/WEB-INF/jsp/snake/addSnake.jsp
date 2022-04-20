@@ -16,7 +16,7 @@
             <input class="add-input" type="text" name="species" id="speciesId" value="${snakeFormBean.species}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Species</label>
+            <label class="form-label add-label">Species</label>
             <c:forEach items="${bindingResult.getFieldErrors('species')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -24,7 +24,7 @@
             </c:forEach>
         </div>
         <div class="group">
-            <label class="add-label">Sex</label>
+            <label class="form-label add-label">Sex</label>
             <select class="add-selection" name="sex" id="sexId">
                 <c:choose>
                     <c:when test="${snakeFormBean.sex == 'female'}">
@@ -50,7 +50,7 @@
             <input class="add-input" type="date" name="birthDate" id="birthDateId" value="${snakeFormBean.birthDate}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Birth Date</label>
+            <label class="form-label add-label">Birth Date</label>
             <c:forEach items="${bindingResult.getFieldErrors('birthDate')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -61,7 +61,7 @@
             <input class="add-input" type="text" name="imgUrl" value="${snakeFormBean.imgUrl}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Image URL</label>
+            <label class="form-label add-label">Image URL</label>
             <c:forEach items="${bindingResult.getFieldErrors('imgUrl')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -72,7 +72,7 @@
             <input class="add-input" type="text" name="note" id="noteId" value="${snakeFormBean.note}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Note</label>
+            <label class="form-label add-label">Note</label>
             <c:forEach items="${bindingResult.getFieldErrors('note')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}

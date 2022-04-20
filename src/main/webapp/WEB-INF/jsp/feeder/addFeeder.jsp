@@ -17,7 +17,7 @@
             <input class="add-input" type="text" name="name" id="nameId" value="${feederFormBean.name}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Name</label>
+            <label class="form-label add-label">Name</label>
             <c:forEach items="${bindingResult.getFieldErrors('name')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -28,7 +28,7 @@
             <input class="add-input" type="text" name="size" id="sizeId" value="${feederFormBean.size}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Size</label>
+            <label class="form-label add-label">Size</label>
             <c:forEach items="${bindingResult.getFieldErrors('size')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -36,7 +36,7 @@
             </c:forEach>
         </div>
         <div class="group">
-            <label class="add-label">Status</label>
+            <label class="form-label add-label">Status</label>
             <select class="add-selection" name="status" id="statusId">
                 <c:choose>
                     <c:when test="${feederFormBean.status == 'F/T'}">
@@ -61,7 +61,7 @@
             <input class="add-input" type="number" name="quantity" id="quantityId" value="${feederFormBean.quantity}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Quantity</label>
+            <label class="form-label add-label">Quantity</label>
             <c:forEach items="${bindingResult.getFieldErrors('quantity')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -72,7 +72,7 @@
             <input class="add-input" type="text" name="imgUrl" id="imgUrlId" value="${feederFormBean.imgUrl}">
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-            <label class="add-label">Image URL</label>
+            <label class="form-label add-label">Image URL</label>
             <c:forEach items="${bindingResult.getFieldErrors('imgUrl')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}

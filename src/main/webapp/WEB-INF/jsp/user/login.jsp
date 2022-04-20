@@ -11,7 +11,7 @@
             <input class="login-inputs" type="text" name="username">
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label class="login-labels">Email</label>
+            <label class="form-label login-labels">Email</label>
             <c:forEach items="${bindingResult.getFieldErrors('username')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -22,7 +22,7 @@
             <input class="login-inputs" type="password" name="password">
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label class="login-labels">Password</label>
+            <label class="form-label login-labels">Password</label>
             <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}

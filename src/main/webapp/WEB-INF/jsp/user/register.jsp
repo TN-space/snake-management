@@ -16,7 +16,7 @@
             <input type="text" name="firstName" id="firstNameId" value="${formBean.firstName}" required>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>First Name</label>
+            <label class="form-label">First Name</label>
             <c:forEach items="${bindingResult.getFieldErrors('firstName')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -27,7 +27,7 @@
             <input type="text" name="lastName" id="lastNameId" value="${formBean.lastName}" required>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Last Name</label>
+            <label class="form-label">Last Name</label>
             <c:forEach items="${bindingResult.getFieldErrors('lastName')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -38,7 +38,7 @@
             <input type="email" name="email" id="emailId" value="${formBean.email}" required>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Email</label>
+            <label class="form-label">Email</label>
             <c:forEach items="${bindingResult.getFieldErrors('email')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -49,7 +49,7 @@
             <input type="password" name="password" id="passwordId" required>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Password</label>
+            <label class="form-label">Password</label>
             <c:forEach items="${bindingResult.getFieldErrors('password')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -60,7 +60,7 @@
             <input type="password" name="confirmPassword" id="confirmPasswordId" required>
             <span class="highlight"></span>
             <span class="bar"></span>
-            <label>Password Confirm</label>
+            <label class="form-label">Password Confirm</label>
             <c:forEach items="${bindingResult.getFieldErrors('confirmPassword')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
