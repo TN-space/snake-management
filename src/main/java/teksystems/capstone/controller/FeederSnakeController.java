@@ -118,9 +118,9 @@ public class FeederSnakeController {
         // usersModelKey - users: is a key-value pair in a model map
         feederSnakes = feederSnakeDAO.findAllFeedings();
 
-        for (Map<String,Object> x:feederSnakes) {
-            log.info("log every feederSnake: "+x);
-        }
+//        for (Map<String,Object> x:feederSnakes) {
+//            log.info("log every feederSnake: "+x);
+//        }
         response.addObject("feedingsModel", feederSnakes);
 
         response.addObject("searchTerm", search);
@@ -145,16 +145,17 @@ public class FeederSnakeController {
 //        return response;
 //    }
 
-    @GetMapping(value = "/snake/remove/{feedingId}")
-    public ModelAndView removeSnake(@PathVariable("feedingId") Integer feedingId) throws Exception {
-        ModelAndView response = new ModelAndView();
-        response.setViewName("feederSnake/showFeedings");
-
-        FeederSnake feeding = feederSnakeDAO.findById(feedingId);
-        if (feeding != null) {
-            feederSnakeDAO.delete(feeding);
-        }
-        response.setViewName("redirect:/feederSnake/showFeedings");
-        return response;
-    }
+//    @GetMapping(value = "/snake/remove/{feedingId}")
+//    public ModelAndView removeSnake(@PathVariable("feedingId") Integer feedingId) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("feederSnake/showFeedings");
+//
+//        FeederSnake feeding = feederSnakeDAO.findById(feedingId);
+//        log.info("feeding: "+feeding);
+//        if (feeding != null) {
+//            feederSnakeDAO.delete(feeding);
+//        }
+//        response.setViewName("redirect:/feederSnake/showFeedings");
+//        return response;
+//    }
 }

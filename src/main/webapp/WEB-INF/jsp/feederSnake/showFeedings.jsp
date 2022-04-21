@@ -20,7 +20,7 @@
         <th>Species</th>
         <th>Feeder</th>
         <th>Quantity</th>
-        <th>Action</th>
+<%--        <th>Action</th>--%>
     </tr>
     <c:forEach items="${feedingsModel}" var="feeding">
         <tr>
@@ -29,7 +29,7 @@
             <td>${feeding.species}</td>
             <td>${feeding.name}</td>
             <td>${feeding.quantity}</td>
-            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>
+<%--            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>--%>
 <%--            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>--%>
         </tr>
     </c:forEach>
