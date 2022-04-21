@@ -10,23 +10,24 @@
     max-width: 1080px;
     margin: 0 auto;
     background: whitesmoke;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-wrapper {
-    display:flex;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     transition: 0.3s;
-    /*width: 15%;*/
     border-radius: 5px;
-    margin:5px auto;
-    -webkit-animation:scaledown 0.3s linear;
-    -moz-animation:scaledown 0.3s linear;
-    animation:scaledown 0.2s linear;
-    transform-origin:50% 50%;
+    margin: 5px 0;
+    -webkit-animation: scaledown 0.3s linear;
+    -moz-animation: scaledown 0.3s linear;
+    animation: scaledown 0.2s linear;
+    transform-origin: 50% 50%;
     animation-fill-mode: forwards;
     background-color: white;
     height: 220px;
-    width: 400px;
+    width: 48%;
 }
 
 .card-wrapper:hover {
@@ -38,22 +39,38 @@
     transform-origin:50% 50%;
     animation-fill-mode: forwards;
 }
-
+.card-image{
+    width: 30%;
+    padding: 5px;
+}
 .card-image .feeder-img {
     border-radius: 5px 0 0 5px;
     height: 90%;
-    width: 130px;
+    width: 100%;
     object-fit: contain;
-    padding: 5px;
 }
 .title{
     margin-bottom: 10px;
     align-content: center;
+    text-align: left;
+}
+.card-content{
+    width: 70%;
+    padding-left: 10px;
 }
 .card-content .title {
     padding-right: 5px;
     font-size: 2em;
     font-weight: bold;
+}
+.buttons{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+    align-items: center;
 }
 
 @keyframes scale{

@@ -1,12 +1,13 @@
 
 .add-form-container{
     /*font-family:'Roboto';*/
-    width:400px;
-    margin:10px 45px ;
-    display:block;
-    background:#FFF;
-    padding:10px 50px 50px;
+    width: 400px;
+    margin: 10px 45px;
+    display: block;
+    background: #FFF;
+    padding: 10px 0px 50px 50px;
     text-align: -webkit-center;
+    z-index: 99;
 }
 .h3-add{
     margin-bottom: 10px;
@@ -31,4 +32,12 @@
     color: #003d5c;
     opacity: 0.9;
     font-weight: bold;
+}
+.snake-img{
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    z-index: 98;
 }
