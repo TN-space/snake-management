@@ -51,7 +51,7 @@
         </c:forEach>
     </div>
     <div class="group">
-        <input class="add-input-long" type="number" name="quantity"  value="${feederSnakeFormBean.quantity}">
+        <input class="add-input-long" type="number" name="quantity"  value="${feederSnakeFormBean.quantity}" placeholder="default feeding quantity is 1..">
         <span class="highlight"></span>
         <span class="bar bar-long"></span>
         <label class="form-label add-label long-margin">Feeding Quantity</label>

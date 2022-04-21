@@ -19,7 +19,7 @@
     <title>Snake Management</title>
 </head>
 
-<body>
+<body class="bodyId">
 
     <div class="container">
         <nav class="navi">

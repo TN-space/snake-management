@@ -79,6 +79,7 @@
                 </div>
             </c:forEach>
         </div>
+<%--        Check box <input type="checkbox" name="checkbox">--%>
         <button class="submit-btn" type="submit">Submit</button>
     </form>
 </div>

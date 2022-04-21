@@ -36,7 +36,6 @@ public class SnakeController {
     public ModelAndView addingSnake() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("snake/addSnake");
-
         return response;
     }
 
@@ -79,7 +78,6 @@ public class SnakeController {
 //        List<String> ages = new ArrayList<>();
 //        ages.add(age);
 //        response.addObject("ages", ages);
-
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
 

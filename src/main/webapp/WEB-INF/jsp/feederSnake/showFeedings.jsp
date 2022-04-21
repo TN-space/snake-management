@@ -24,6 +24,7 @@
     </tr>
     <c:forEach items="${feedingsModel}" var="feeding">
         <tr>
+<%--            accessing data in List<Map<String,Object>> using the name of the columns--%>
             <td>${feeding.feeding_date}</td>
             <td>${feeding.species}</td>
             <td>${feeding.name}</td>
