@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../include/header.jsp" />
+<%--<jsp:include page="../include/header.jsp" />--%>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js"></script>
 <script id="vertexShader" type="x-shader/x-vertex">
@@ -106,7 +106,6 @@
         position: fixed;
         touch-action: none;
         top: 0;
-        z-index: 10;
     }
     #description {
         background: #FFF;

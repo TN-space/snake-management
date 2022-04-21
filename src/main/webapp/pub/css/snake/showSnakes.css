@@ -64,7 +64,7 @@ h2 {
 }
 
 .card {
-    height: 330px;
+    /*height: 330px;*/
     margin: 0 0 20px;
     position: relative;
     border: none;

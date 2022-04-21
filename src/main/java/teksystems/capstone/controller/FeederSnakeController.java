@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.dao.FeederSnakeDAO;
@@ -127,6 +124,37 @@ public class FeederSnakeController {
         response.addObject("feedingsModel", feederSnakes);
 
         response.addObject("searchTerm", search);
+        return response;
+    }
+
+//    @GetMapping(value = "/feederSnake/edit/{feedingId}")
+//    public ModelAndView editFeeding(@PathVariable("feedingId") Integer feedingId) throws Exception {
+//        ModelAndView response = new ModelAndView();
+//        response.setViewName("feederSnake/addFeederSnake");
+//
+//        FeederSnake feeding = feederSnakeDAO.findById(feedingId);
+//        AddFeederSnakeFormBean form = new AddFeederSnakeFormBean();
+//
+//        form.setId(feeding.getId());
+//        form.setFeederId(feeding.getFeederId());
+//        form.setSnakeId(feeding.getSnakeId());
+//        form.setQuantity(feeding.getQuantity());
+//
+//        response.addObject("feedingFormBean", form);
+//
+//        return response;
+//    }
+
+    @GetMapping(value = "/snake/remove/{feedingId}")
+    public ModelAndView removeSnake(@PathVariable("feedingId") Integer feedingId) throws Exception {
+        ModelAndView response = new ModelAndView();
+        response.setViewName("feederSnake/showFeedings");
+
+        FeederSnake feeding = feederSnakeDAO.findById(feedingId);
+        if (feeding != null) {
+            feederSnakeDAO.delete(feeding);
+        }
+        response.setViewName("redirect:/feederSnake/showFeedings");
         return response;
     }
 }

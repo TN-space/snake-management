@@ -69,6 +69,8 @@
         </div>
         <button class="submit-btn" type="submit">Submit</button>
     </form>
+<%--    <input type="radio" id="html" name="fav_language" value="HTML">--%>
+
 </div>
 
 

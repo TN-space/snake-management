@@ -29,7 +29,8 @@
             <td>${feeding.species}</td>
             <td>${feeding.name}</td>
             <td>${feeding.quantity}</td>
-            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>
+            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>
+<%--            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>--%>
         </tr>
     </c:forEach>
 </table>

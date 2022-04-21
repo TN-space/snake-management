@@ -2,6 +2,7 @@ package teksystems.capstone.database.entity;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class FeederSnake {
     @Column(name = "quantity")
     private Integer quantity;
 
+    //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "feeding_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date feedingDate = new Date();

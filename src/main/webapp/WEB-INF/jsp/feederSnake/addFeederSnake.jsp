@@ -19,7 +19,7 @@
 
 <%--method = get to show query after submit, method  is = post before--%>
 <form id="feeder-snake-form" action="/feederSnake/added" method="get">
-    <input type="hidden" name="id" value="${formBean.id}">
+    <input type="hidden" name="id" value="${feedingFormBean.id}">
     <div class="group">
         <label class="form-label add-label long-margin">Snake</label>
         <select class="add-selection-long" name="snakeId" >
