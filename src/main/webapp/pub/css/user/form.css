@@ -45,8 +45,8 @@ input:focus{ outline:none; }
     font-weight:normal;
     position:absolute;
     pointer-events:none;
-    left:5px;
-    top:10px;
+    left: 2%;
+    top: 25%;
     transition:0.2s ease all;
     -moz-transition:0.2s ease all;
     -webkit-transition:0.2s ease all;

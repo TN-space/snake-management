@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../../pub/css/feederSnake/addFeeding.css">
     <link rel="stylesheet" href="../../../pub/css/snake/showSnakes.css">
     <link rel="stylesheet" href="../../../pub/css/feeder/showFeeders.css">
+    <link rel="stylesheet" href="../../../pub/css/feederSnake/showFeedings.css">
     <script src="https://kit.fontawesome.com/2c911235fd.js" crossorigin="anonymous"></script>
     <title>Snake Management</title>
 </head>

@@ -13,29 +13,52 @@
 <%--    <input name="search" type="search" placeholder="${searchTerm}" />--%>
 <%--    <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>--%>
 <%--</form>--%>
+<h3>Feeding History</h3>
+<div id="wrapper">
 
-<table class="table">
+<table id="keywords" cellspacing="0" cellpadding="0">
+    <thead>
     <tr>
-        <th>Feeding Date</th>
-        <th>Species</th>
-        <th>Feeder</th>
-        <th>Quantity</th>
-<%--        <th>Action</th>--%>
+        <th><span>Feeding Date</span></th>
+        <th><span>Species</span></th>
+        <th class="th-column-narrow"><span>Feeder</span></th>
+        <th class="th-column-narrow"><span>Quantity Fed</span></th>
+<%--        <th><span>Action</span></th>--%>
     </tr>
+    </thead>
+<%--    <tr>--%>
+<%--        <th>Feeding Date</th>--%>
+<%--        <th>Species</th>--%>
+<%--        <th>Feeder</th>--%>
+<%--        <th>Quantity</th>--%>
+<%--&lt;%&ndash;        <th>Action</th>&ndash;%&gt;--%>
+<%--    </tr>--%>
+    <tbody>
     <c:forEach items="${feedingsModel}" var="feeding">
-        <tr>
-<%--            accessing data in List<Map<String,Object>> using the name of the columns--%>
-            <td>${feeding.feeding_date}</td>
-            <td>${feeding.species}</td>
-            <td>${feeding.name}</td>
-            <td>${feeding.quantity}</td>
-<%--            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>--%>
-<%--            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>--%>
-        </tr>
+    <tr class="tr-on-hover">
+        <td class="lalign">${feeding.feeding_date}</td>
+        <td style="text-align: left">${feeding.species}</td>
+        <td style="text-align: left">${feeding.name}</td>
+        <td>${feeding.quantity}</td>
+<%--        <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>--%>
+<%--        <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>--%>
+    </tr>
     </c:forEach>
+    </tbody>
+<%--    <c:forEach items="${feedingsModel}" var="feeding">--%>
+<%--        <tr>--%>
+<%--&lt;%&ndash;            accessing data in List<Map<String,Object>> using the name of the columns&ndash;%&gt;--%>
+<%--            <td>${feeding.feeding_date}</td>--%>
+<%--            <td>${feeding.species}</td>--%>
+<%--            <td>${feeding.name}</td>--%>
+<%--            <td>${feeding.quantity}</td>--%>
+<%--&lt;%&ndash;            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>&ndash;%&gt;--%>
+<%--&lt;%&ndash;            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>&ndash;%&gt;--%>
+<%--        </tr>--%>
+<%--    </c:forEach>--%>
 </table>
 
-    </div>
+<%--    </div>--%>
 </div>
 
 <%--<script>--%>

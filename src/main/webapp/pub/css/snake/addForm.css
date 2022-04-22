@@ -1,13 +1,14 @@
 
 .add-form-container{
     /*font-family:'Roboto';*/
-    width: 400px;
+    width: 500px;
     margin: 10px 45px;
     display: block;
     background: #FFF;
     padding: 10px 0px 50px 50px;
     text-align: -webkit-center;
     z-index: 99;
+    border-radius: 0.2px;
 }
 .h3-add{
     margin-bottom: 10px;
@@ -23,10 +24,10 @@
     margin-left: 50px;
 }
 .add-input {
-    width: 200px;
+    width: 300px;
 }
 .add-bar{
-    width: 200px;
+    width: 300px;
 }
 .add-label{
     color: #003d5c;
