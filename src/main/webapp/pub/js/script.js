@@ -14,4 +14,4 @@ $('#feeder-edit-btn').click(function(){
 // for table in showFeedings
 $(function(){
     $('#keywords').tablesorter();
-});
+})
