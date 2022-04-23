@@ -10,9 +10,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.21.5/js/jquery.tablesorter.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.21.5/css/theme.ice.min.css" rel="stylesheet" />
 
+<%--    slick slider--%>
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../pub/css/slick/slick-theme.css"/>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../../pub/css/header/header.css">
+    <link rel="stylesheet" href="../../../pub/css/index.css">
     <link rel="stylesheet" href="../../../pub/css/user/form.css">
     <link rel="stylesheet" href="../../../pub/css/user/login.css">
     <link rel="stylesheet" href="../../../pub/css/snake/addForm.css">
@@ -37,21 +42,21 @@
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <li class="navi__li"><a href="#">Snake</a>
-                            <ul>
+                            <ul class="ul-dropdown">
                                 <li class="navi__li"><a href="/snake/add">Add Snake</a> </li>
                                 <li class="navi__li"><a href="/snake/showSnakes">Show Snakes</a></li>
                             </ul>
                         </li>
 
                         <li class="navi__li"><a href="#">Feeder</a>
-                            <ul>
+                            <ul class="ul-dropdown">
                                 <li class="navi__li"><a href="/feeder/add">Add Feeder</a></li>
                                 <li class="navi__li"><a href="/feeder/showFeeders">Show Feeders</a></li>
                             </ul>
                         </li>
 
                         <li class="navi__li"><a href="#">Feeding</a>
-                            <ul>
+                            <ul class="ul-dropdown">
                                 <li class="navi__li"><a href="/feederSnake/add">Add Feeding</a></li>
                                 <li class="navi__li"><a href="/feederSnake/showFeedings">Show Feedings</a></li>
                             </ul>

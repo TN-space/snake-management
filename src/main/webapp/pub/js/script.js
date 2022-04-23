@@ -1,4 +1,6 @@
 
+import slick from "./slick";
+
 // for edit button in showSnakes
 $('#snake-edit-btn').click(function(){
     $('#snakes-container-id').hide();

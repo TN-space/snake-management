@@ -131,7 +131,14 @@ body {
 nav ul ul {
     display: none;
     position: absolute;
-    /*top: 60px; !* the height of the main nav *!*/
+    background-color: rgb(214 212 212 / 90%);
+    padding: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 200px;
+}
+nav ul ul .nav___li{
+    margin: 10px 0;
 }
 nav ul li:hover > ul {
     display:inherit;
@@ -235,3 +242,4 @@ table {
      right: 0;
      display: flex;
 }
+
