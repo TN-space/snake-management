@@ -3,12 +3,14 @@
 
 <jsp:include page="include/header.jsp" />
 
-<sec:authorize access="!isAuthenticated()">
-    <h1 class="h1-index">Welcome to Snake Management System</h1>
-</sec:authorize>
+<h1 class="h1-index">Welcome to Snake Management System</h1>
+<%--<sec:authorize access="!isAuthenticated()">--%>
+<%--    --%>
+<%--</sec:authorize>--%>
 
 <sec:authorize access="isAuthenticated()">
-    <h1>This is an authenticated page</h1>
+<%--    <h1 class="h1-index">Welcome to Snake Management System</h1>--%>
+    <h4 class="h4-index">Welcome back <sec:authentication property="principal.username" /></h4>
 </sec:authorize>
 
 <div class="index-wrapper">
