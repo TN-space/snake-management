@@ -3,10 +3,8 @@
 
 <jsp:include page="include/header.jsp" />
 
-<h1>This is an index page</h1>
-
 <sec:authorize access="!isAuthenticated()">
-    <h1>This is an unauthenticated page</h1>
+    <h1 class="h1-index">Welcome to Snake Management System</h1>
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">
@@ -18,7 +16,7 @@
         <div class="slider">
             <div class="slider__box__container">
                 <div class="slider__box">
-                    <img class="slider__image" src="../../pub/img/hypo.jpg" alt="hypo">
+                    <img class="slider__image" src="../../pub/img/img.jpg" alt="img">
                 </div>
             </div>
             <div class="slider__box__container">
@@ -28,32 +26,19 @@
             </div>
             <div class="slider__box__container">
                 <div class="slider__box">
-                    <img class="slider__image" src="../../pub/img/hypo.jpg" alt="hypo">
+                    <img class="slider__image" src="../../pub/img/moonglow.jpg" alt="moonglow">
                 </div>
             </div>
             <div class="slider__box__container">
                 <div class="slider__box">
-                    <img class="slider__image" src="../../pub/img/hypo.jpg" alt="hypo">
+                    <img class="slider__image" src="../../pub/img/sunglow.jpg" alt="sunglow">
                 </div>
             </div>
             <div class="slider__box__container">
                 <div class="slider__box">
-                    <img class="slider__image" src="../../pub/img/hypo.jpg" alt="hypo">
+                    <img class="slider__image" src="../../pub/img/normal.jpg" alt="normal">
                 </div>
             </div>
-
-<%--            <div class="slider__box">--%>
-<%--                <img class="slider__image" src="../../pub/img/moonglow.jpg" alt="moonglow">--%>
-<%--            </div>--%>
-<%--            <div class="slider__box">--%>
-<%--                <img class="slider__image" src="../../pub/img/sunglow.jpg" alt="sunglow">--%>
-<%--            </div>--%>
-<%--            <div class="slider__box">--%>
-<%--                <img class="slider__image" src="../../pub/img/img.jpg" alt="img">--%>
-<%--            </div>--%>
-<%--            <div class="slider__box">--%>
-<%--                <img class="slider__image" src="../../pub/img/albino.jpg" alt="albino">--%>
-<%--            </div>--%>
         </div>
     </div>
 </div>

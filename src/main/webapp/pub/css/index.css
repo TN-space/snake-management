@@ -1,7 +1,14 @@
 
+.h1-index {
+    text-align: center;
+    font-size: 50px;
+    color: #003d5c;
+    font-weight: bold;
+    margin-top: 20px;
+}
 .index-wrapper{
     width: 100%;
-    padding: 125px 0px;
+    padding: 70px 0px 80px;
 }
 .index-container{
     max-width: 90%;
