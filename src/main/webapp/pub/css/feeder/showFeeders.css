@@ -57,20 +57,27 @@
 .card-content{
     width: 70%;
     padding-left: 10px;
+    font-size: 17px;
 }
 .card-content .title {
     padding-right: 5px;
     font-size: 2em;
     font-weight: bold;
 }
+.card-content p {
+    padding-bottom: 10px;
+}
 .buttons{
     position: absolute;
-    bottom: 5px;
-    right: 5px;
+    bottom: 10px;
+    right: 10px;
     display: flex;
-    width: 80px;
+    width: 120px;
     justify-content: space-between;
     align-items: center;
+}
+.buttons a {
+    text-decoration: none;
 }
 
 @keyframes scale{

@@ -135,6 +135,7 @@ h2 {
 }
 .card .card-detail a{
     text-decoration: none;
+    margin-right: 10px;
 }
 .card-control{
     position: absolute;
