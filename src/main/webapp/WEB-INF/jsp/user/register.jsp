@@ -2,9 +2,7 @@
 
 <jsp:include page="../include/header.jsp" />
 
-
 <div class="form-container">
-
     <c:choose>
         <c:when test="${empty formBean.id}"><h3>Register</h3></c:when>
         <c:when test="${not empty formBean.id}"><h3>Edit</h3></c:when>
@@ -69,8 +67,6 @@
         </div>
         <button class="submit-btn" type="submit">Submit</button>
     </form>
-<%--    <input type="radio" id="html" name="fav_language" value="HTML">--%>
-
 </div>
 
 

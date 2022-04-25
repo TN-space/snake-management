@@ -3,17 +3,7 @@
 <jsp:include page="../include/header.jsp" />
 
 
-<%--<c:choose>--%>
-<%--    &lt;%&ndash;    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>&ndash;%&gt;--%>
-<%--    <c:when test="${not empty feederSnakeFormBean.id}"><h1>Edit Feeding</h1></c:when>--%>
-<%--    <c:otherwise><h1>Feeding</h1></c:otherwise>--%>
-<%--</c:choose>--%>
 <div class="add-form-container">
-<%--    <c:choose>--%>
-<%--        &lt;%&ndash;    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>&ndash;%&gt;--%>
-<%--        <c:when test="${not empty snakeFormBean.id}"><h3 class="h3-add">Change Snake Information</h3></c:when>--%>
-<%--        <c:otherwise><h3 class="h3-add">Add Snake</h3></c:otherwise>--%>
-<%--    </c:choose>--%>
 
 <h3 class="h3-add">Add Feeding</h3>
 
@@ -39,6 +29,7 @@
         <select class="add-selection-long" name="feederId" >
             <option></option>
             <c:forEach items="${feedersModelKey}" var="feeder">
+<%--                check if feeder.quantity is greater than 0, aka only show feeders that have quantity greater than 0--%>
                 <c:if test = "${feeder.quantity > 0}">
                     <option value="${feeder.id}">${feeder.name} | <b>Size:</b> ${feeder.size} | <b>Availability:</b> ${feeder.quantity}</option>
                 </c:if>

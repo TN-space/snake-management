@@ -42,9 +42,6 @@
     <button class="btn btn-primary" type="submit">Search</button>
 </form>
 
-<%--<c:if test="${empty searchValue}">--%>
-<%--    <h4>Total users: ${usersModel.size()}</h4>--%>
-<%--</c:if>--%>
 <c:if test="${not empty searchValue}">
     <h4 class="h4-index" style="margin-top: 40px">Search Result: ${usersModel.size()}</h4>
 </c:if>
@@ -65,6 +62,5 @@
         </tr>
     </c:forEach>
 </table>
-
 
 <jsp:include page="../include/footer.jsp" />

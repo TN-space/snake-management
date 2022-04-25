@@ -36,51 +36,62 @@ public class FeederSnakeController {
     @Autowired
     private SnakeDAO snakeDAO;
 
+    // This method to show add form for feedersnake, aka add feeding form
     @RequestMapping(value = "/feederSnake/add", method = RequestMethod.GET)
     public ModelAndView creatingFeeding() throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("feederSnake/addFeederSnake");
+        // query all snakes in database
         List<Snake> snakes = snakeDAO.findAll();
+        // query all feeder in database
         List<Feeder> feeders = feederDAO.findAll();
+
+        // save all snakes and feeders into their respective modelKey to be used in jsp
         response.addObject("snakesModelKey", snakes);
         response.addObject("feedersModelKey", feeders);
-        // query to get all snakes, add to model
-        // query to get all feeders, add to model
-        // on jsp page, loop over both
-        // if not using formBean, can use request param for both id
         return response;
     }
 
+    // This method to run when the submit button in addFeederSnake form is clicked
     @RequestMapping(value = "/feederSnake/added", method = {RequestMethod.GET})
     public ModelAndView feederSnakeAdded(@Valid AddFeederSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
+        // if there is any errors
         if (bindingResult.hasErrors()) {
+            // iterate through every field
             for (ObjectError error : bindingResult.getAllErrors()) {
+                // log out error for every field
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
             response.addObject("bindingResult", bindingResult);
 
             // if there is one or more errors we don't want to continue with the creating process,
-            // and show register.jsp page
+            // and re-render addFeederSnake again
             response.setViewName("feederSnake/addFeederSnake");
             return response;
         }
 
+        // query a  feederSnake using the form id
         FeederSnake feederSnake = feederSnakeDAO.findById(form.getId());
+        // if feederSnake is null, aka form doesn't have an id yet -> new form, new feederSnake
         if (feederSnake == null) {
+            // create a new feederSnake
             feederSnake = new FeederSnake();
         }
 
+        // query a snake using snake id
         Snake snake = snakeDAO.findSnakeById(form.getSnakeId());
+        // query a feeder using feeder id
         Feeder feeder = feederDAO.findFeederById(form.getFeederId());
-        log.info("form: "+ form);
-        log.info("snake: " + snake);
-        log.info("feeder: " + feeder);
 
+        // set the default feeding quantity, defaultQuantity, to be equal to quantity entered in the submitted form
         Integer defaultQuantity = form.getQuantity();
+        // if defaultQuantity is null, aka no quantity entered in form, set defaultQuantity to 1
         if (defaultQuantity == null) defaultQuantity = 1;
 
+        // if the quantity in-stock of a feeder is greater than or equal to defaultQuantity
         if (feeder.getQuantity() >= defaultQuantity) {
+            // set feederSnake information
             feederSnake.setFeeder(feeder);
             feederSnake.setQuantity(defaultQuantity);
             feeder.setQuantity(feeder.getQuantity() - defaultQuantity);
@@ -89,44 +100,42 @@ public class FeederSnakeController {
             feederSnake.setSnake(snake);
             snakeDAO.save(snake);
             feederSnakeDAO.save(feederSnake);
+            response.setViewName("redirect:/feederSnake/showFeedings");
         } else {
-//            response.setViewName("redirect:/feeder/showFeeders");
+            // if feeder quantity in-stock is lower than defaultQuantity, re-render addFeederSnake form
+            response.setViewName("redirect:/feederSnake/add");
         }
-
-        // if have time, add adding successful message
-        // use redirect to trigger the next method/function
-        response.setViewName("redirect:/feederSnake/showFeedings");
         return response;
     }
 
+    // This method to show all feedings (past feedings)
     @GetMapping(value = "/feederSnake/showFeedings")
     public ModelAndView showFeedings(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
 
-        //write query in sql to select everything I need
+        // create a feederSnakes List<Map<String, Object>>
         List<Map<String, Object>> feederSnakes;
-        // if the search is not blank
-        if(!StringUtils.isBlank(search)) {
-            // run these lines
+
+        // search for feeding - not implemented yet
+//        if(!StringUtils.isBlank(search)) {
+//            // run these lines
 //            feederSnakes = feederSnakeDAO.findBySpeciesContainingIgnoreCase(search);
-        } else {
-            // else, run these
+//        } else {
+//            // else, run these
 //            feederSnakes = feederSnakeDAO.findAll();
-            search = "search feeding by species...";
-        }
-        // this line puts the list of users we just queried into the model
-        // usersModelKey - users: is a key-value pair in a model map
+//            search = "search feeding by species...";
+//        }
+
+        // query for all feedings in database
         feederSnakes = feederSnakeDAO.findAllFeedings();
 
-//        for (Map<String,Object> x:feederSnakes) {
-//            log.info("log every feederSnake: "+x);
-//        }
         response.addObject("feedingsModel", feederSnakes);
 
         response.addObject("searchTerm", search);
         return response;
     }
 
+    // not implemented yet
 //    @GetMapping(value = "/feederSnake/edit/{feedingId}")
 //    public ModelAndView editFeeding(@PathVariable("feedingId") Integer feedingId) throws Exception {
 //        ModelAndView response = new ModelAndView();
@@ -145,6 +154,7 @@ public class FeederSnakeController {
 //        return response;
 //    }
 
+        // not implemented yet
 //    @GetMapping(value = "/snake/remove/{feedingId}")
 //    public ModelAndView removeSnake(@PathVariable("feedingId") Integer feedingId) throws Exception {
 //        ModelAndView response = new ModelAndView();

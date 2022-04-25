@@ -16,6 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
+    // This method to show log-in form
     @RequestMapping(value = "/login/login", method = RequestMethod.GET)
     public ModelAndView login() throws Exception {
         ModelAndView response = new ModelAndView();

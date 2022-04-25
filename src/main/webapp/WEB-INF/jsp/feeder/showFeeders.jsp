@@ -2,13 +2,6 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<%--<c:choose>--%>
-<%--    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>--%>
-<%--    <c:when test="${not empty formBean.id}"><h1>Edit</h1></c:when>--%>
-<%--    &lt;%&ndash;    <c:otherwise>undefined</c:otherwise>&ndash;%&gt;--%>
-<%--</c:choose>--%>
-
-
 <form action="/feeder/showFeeders" method="get" class="search-box">
     <input name="search" type="search" placeholder="${searchTerm}" />
     <button type="submit" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -40,13 +33,5 @@
         </div>
     </c:forEach>
 </div>
-
-
-<%--<script>--%>
-<%--    $('#feeder-edit-btn').click(function(){--%>
-<%--        $('#feeders-container').hide();--%>
-<%--        $('#feeder-form').show();--%>
-<%--    })--%>
-<%--</script>--%>
 
 <jsp:include page="../include/footer.jsp" />

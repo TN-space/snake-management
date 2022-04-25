@@ -3,9 +3,7 @@
 <jsp:include page="../include/header.jsp" />
 
 <div class="add-form-container">
-
     <c:choose>
-        <%--    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>--%>
         <c:when test="${not empty feederFormBean.id}"><h3  class="h3-add">Edit Feeder Information</h3></c:when>
         <c:otherwise><h3 class="h3-add">Add Feeder</h3></c:otherwise>
     </c:choose>

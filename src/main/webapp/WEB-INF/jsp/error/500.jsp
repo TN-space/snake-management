@@ -98,10 +98,6 @@
   }
 </script>
 <style>
-    /*.bodyId{*/
-    /*    margin: 0;*/
-    /*    padding: 0;*/
-    /*}*/
     #container {
         position: fixed;
         touch-action: none;
@@ -126,13 +122,6 @@
 </div>
 
 <script>
-    /*
-Most of the stuff in here is just bootstrapping. Essentially it's just
-setting ThreeJS up so that it renders a flat surface upon which to draw
-the shader. The only thing to see here really is the uniforms sent to
-the shader. Apart from that all of the magic happens in the HTML view
-under the fragment shader.
-*/
 
     let container;
     let camera, scene, renderer;
@@ -234,10 +223,6 @@ under the fragment shader.
     }
 
 
-
-
-
-
     let capturer = new CCapture( {
         verbose: true,
         framerate: 60,
@@ -274,4 +259,5 @@ under the fragment shader.
         }
     }
 </script>
+
 <jsp:include page="../include/footer.jsp" />

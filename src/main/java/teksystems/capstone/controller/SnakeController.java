@@ -32,6 +32,7 @@ public class SnakeController {
     @Autowired
     private SnakeDAO snakeDAO;
 
+    // This method to show addSnake form
     @RequestMapping(value = "/snake/add", method = RequestMethod.GET)
     public ModelAndView addingSnake() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -40,31 +41,35 @@ public class SnakeController {
     }
 
 //    RequestMethod.POST, <-- this request post is taken from this request below
+    // Once the submit button in the above form is clicked, this method is triggered (because action in above form points to this path "/snake/added"
     @RequestMapping(value = "/snake/added", method = {RequestMethod.GET})
     public ModelAndView snakeAdded(@Valid AddSnakeFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
 
+        // if there is any errors
         if (bindingResult.hasErrors()) {
+            // iterate over all field
             for (ObjectError error : bindingResult.getAllErrors()) {
+                // log out error for each field
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
             response.addObject("bindingResult", bindingResult);
 
             // if there is one or more errors we don't want to continue with the creating process,
-            // and show register.jsp page
+            // and re-render addSnake form again
             response.setViewName("snake/addSnake");
             return response;
         }
 
-        // first, we assumed it's an edit, and thus we want to query the user from database using id
+        // first, we assumed it's an edit, and thus we want to query the snake from database using id
         Snake snake = snakeDAO.findById(form.getId());
-        // if user is null, aka the id isn't there, aka new user
+        // if snake is null, aka the id isn't there, aka new snake
         if (snake == null) {
-            // hence, create new user
+            // hence, create new snake
             snake = new Snake();
         }
 
-        // to calculate age - not using right now
+        // to calculate age dynamically - not working yet
 //        Long ageDay = DAYS.between(form.getBirthDate(), LocalDate.now());
 //        log.info(ageDay.toString());
 //        String age;
@@ -78,38 +83,37 @@ public class SnakeController {
 //        List<String> ages = new ArrayList<>();
 //        ages.add(age);
 //        response.addObject("ages", ages);
+
+        // get username (user email, in this case)
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
 
+        // find user using said username
         User user = userDAO.findByEmail(username);
-        log.info("user in add: "+user);
+        // set association between the new snake and the user, using user id
         snake.setUserId(user.getId());
 
+        // set snake information using info passed in from the form
         snake.setSpecies(form.getSpecies());
         snake.setSex(form.getSex());
         snake.setBirthDate(form.getBirthDate());
         snake.setNote(form.getNote());
         snake.setImgUrl(form.getImgUrl());
 
-        log.info("snake before save: "+ snake);
+        // save the new snake into database
         snakeDAO.save(snake);
 
-//        HashMap<Integer, Snake> map = new HashMap<>();
-//        for (Snake x:snakes) {
-//            map.put(x.getId(), x);
-//        }
-//        response.addObject("mapModel", map);
-
-        // if have time, add adding successful message
-        // use redirect to trigger the next method/function
+        // this redirect triggers showSnakes method below
         response.setViewName("redirect:/snake/showSnakes");
         return response;
     }
 
+    // This method to show all snakes
     @GetMapping(value = "/snake/showSnakes")
     public ModelAndView showSnakes(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
         List<Snake> snakes;
+
         // if the search is not blank
         if(!StringUtils.isBlank(search)) {
             // run these lines
@@ -119,9 +123,9 @@ public class SnakeController {
             snakes = snakeDAO.findAll();
             search = "search animal...";
         }
-//        snakes.forEach((x)->log.info(""+x));
-        // this line puts the list of users we just queried into the model
-        // usersModelKey - users: is a key-value pair in a model map
+
+        // this line puts the list of snakes we just queried into the model
+        // snakesModel - snakes: is a key-value pair in a model map
         response.addObject("snakesModel", snakes);
 
         response.addObject("searchTerm", search);
@@ -129,14 +133,18 @@ public class SnakeController {
     }
 
 
+    // This method to edit a snake's information when edit button is clicked and url changed to /snake/edit/{snakeId}
     @GetMapping(value = "/snake/edit/{snakeId}")
     public ModelAndView editSnake(@PathVariable("snakeId") Integer snakeId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("snake/addSnake");
 
+        // query the snake using snakeId
         Snake snake = snakeDAO.findById(snakeId);
+        // creat a new form
         AddSnakeFormBean form = new AddSnakeFormBean();
 
+        // set queried snake info into the new form
         form.setId(snake.getId());
         form.setSpecies(snake.getSpecies());
         form.setSex(snake.getSex());
@@ -144,11 +152,13 @@ public class SnakeController {
         form.setNote(snake.getNote());
         form.setImgUrl(snake.getImgUrl());
 
+        // save all the info into snakeFormBean to be used in jsp and show on ui
         response.addObject("snakeFormBean", form);
 
         return response;
     }
 
+    // This method remove a snake using snakeId
     @GetMapping(value = "/snake/remove/{snakeId}")
     public ModelAndView removeSnake(@PathVariable("snakeId") Integer snakeId) throws Exception {
         ModelAndView response = new ModelAndView();

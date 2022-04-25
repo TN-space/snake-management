@@ -26,13 +26,6 @@
 <%--        <th><span>Action</span></th>--%>
     </tr>
     </thead>
-<%--    <tr>--%>
-<%--        <th>Feeding Date</th>--%>
-<%--        <th>Species</th>--%>
-<%--        <th>Feeder</th>--%>
-<%--        <th>Quantity</th>--%>
-<%--&lt;%&ndash;        <th>Action</th>&ndash;%&gt;--%>
-<%--    </tr>--%>
     <tbody>
     <c:forEach items="${feedingsModel}" var="feeding">
     <tr class="tr-on-hover">
@@ -45,33 +38,16 @@
     </tr>
     </c:forEach>
     </tbody>
-<%--    <c:forEach items="${feedingsModel}" var="feeding">--%>
-<%--        <tr>--%>
-<%--&lt;%&ndash;            accessing data in List<Map<String,Object>> using the name of the columns&ndash;%&gt;--%>
-<%--            <td>${feeding.feeding_date}</td>--%>
-<%--            <td>${feeding.species}</td>--%>
-<%--            <td>${feeding.name}</td>--%>
-<%--            <td>${feeding.quantity}</td>--%>
-<%--&lt;%&ndash;            <td><a href="/feederSnake/remove/${feeding.id}">Remove</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;            <td><a href="/feederSnake/edit/${feeding.id}">Edit</a></td>&ndash;%&gt;--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
 </table>
 
 <%--    </div>--%>
 </div>
 
+<%--for tablesorter - not working atm--%>
 <%--<script>--%>
-<%--    $('#snake-edit-btn').click(function(){--%>
-<%--        $('#snakes-container').hide();--%>
-<%--        $('#snake-form').show();--%>
+<%--    $(function(){--%>
+<%--        $('#keywords').tablesorter();--%>
 <%--    })--%>
 <%--</script>--%>
-<script>
-    // for table in showFeedings
-    $(function(){
-        $('#keywords').tablesorter();
-    })
-</script>
 
 <jsp:include page="../include/footer.jsp" />

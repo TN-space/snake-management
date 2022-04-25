@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import teksystems.capstone.database.dao.FeederDAO;
 import teksystems.capstone.database.dao.UserDAO;
 import teksystems.capstone.database.entity.Feeder;
-import teksystems.capstone.database.entity.Snake;
 import teksystems.capstone.database.entity.User;
 import teksystems.capstone.formbean.feeder.AddFeederFormBean;
 
@@ -33,6 +32,7 @@ public class FeederController {
     @Autowired
     private FeederDAO feederDAO;
 
+    // This method to show addFeeder form
     @RequestMapping(value = "/feeder/add", method = RequestMethod.GET)
     public ModelAndView addingFeeder() throws Exception {
         ModelAndView response = new ModelAndView();
@@ -41,78 +41,63 @@ public class FeederController {
         return response;
     }
 
+    // This method to catch the info passed from action = "/feeder/added" feederForm
     @RequestMapping(value = "/feeder/added", method = {RequestMethod.GET})
     public ModelAndView feederAdded(@Valid AddFeederFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
+        // if it has any errors
         if (bindingResult.hasErrors()) {
+            // iterate through every field
             for (ObjectError error : bindingResult.getAllErrors()) {
+                // log out error for each field
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
             }
+            // send the errors object model - "bindingResult" back to the form to display on ui
             response.addObject("bindingResult", bindingResult);
 
-            // if there is one or more errors we don't want to continue with the creating process,
-            // and show register.jsp page
+            // re-render the addFeeder form
             response.setViewName("feeder/addFeeder");
             return response;
         }
 
-
-
-        // first, we assumed it's an edit, and thus we want to query the user from database using id
+        // first, we assumed it's an edit, and thus we want to query the feeder from database using id
         Feeder feeder = feederDAO.findById(form.getId());
-        // if user is null, aka the id isn't there, aka new user
+        // if feeder is null, aka the id isn't there, aka new feeder
         if (feeder == null) {
-            // hence, create new user
+            // hence, create new feeder
             feeder = new Feeder();
         }
 
-        // to calculate age - not using right now
-//        Long ageDay = DAYS.between(form.getBirthDate(), LocalDate.now());
-//        log.info(ageDay.toString());
-//        String age;
-//        if (ageDay/365 > 0) {
-//            age = ageDay/365 + " years old";
-//        } else if (ageDay/30 > 0) {
-//            age = ageDay/30 + " months old";
-//        } else {
-//            age = ageDay + " days old";
-//        }
-//        List<String> ages = new ArrayList<>();
-//        ages.add(age);
-//        response.addObject("ages", ages);
-
+        // get username (email, in this case) from log in
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = ((UserDetails) principal).getUsername();
 
+        // get that specific user by email
         User user = userDAO.findByEmail(username);
-        log.info("user in add: "+user);
+        // set feeder associated to said user, using userId
         feeder.setUserId(user.getId());
 
+        // set other information for feeder using information passed in from addFeeder form
         feeder.setName(form.getName());
         feeder.setSize(form.getSize());
         feeder.setStatus(form.getStatus());
         feeder.setQuantity(form.getQuantity());
         feeder.setImgUrl(form.getImgUrl());
 
-        log.info("feeder before save: "+feeder);
+        // save feeder into database
         feederDAO.save(feeder);
 
-//        HashMap<Integer, Snake> map = new HashMap<>();
-//        for (Snake x:snakes) {
-//            map.put(x.getId(), x);
-//        }
-//        response.addObject("mapModel", map);
-
-        // if have time, add adding successful message
-        // use redirect to trigger the next method/function
+        // "redirect:/feeder/showFeeders" triggers method showFeeders
         response.setViewName("redirect:/feeder/showFeeders");
         return response;
     }
 
+    // This method to show all feeders
     @GetMapping(value = "/feeder/showFeeders")
     public ModelAndView showFeeders(@RequestParam(name = "search", required = false) String search) throws Exception {
         ModelAndView response = new ModelAndView();
         List<Feeder> feeders;
+
         // if the search is not blank
         if(!StringUtils.isBlank(search)) {
             // run these lines
@@ -122,22 +107,27 @@ public class FeederController {
             feeders = feederDAO.findAll();
             search = "search feeder...";
         }
-        // this line puts the list of users we just queried into the model
-        // usersModelKey - users: is a key-value pair in a model map
+
+        // this line puts the list of feeders we just queried into the model
+        // feedersModel - feeders: is a key-value pair in a model map
         response.addObject("feedersModel", feeders);
 
         response.addObject("searchTerm", search);
         return response;
     }
 
+    // This method is to run when edit button is clicked and the url changed
     @GetMapping(value = "/feeder/edit/{feederId}")
     public ModelAndView editFeeder(@PathVariable("feederId") Integer feederId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("feeder/addFeeder");
 
+        // query feeder by feederId
         Feeder feeder = feederDAO.findById(feederId);
+        // create a new form
         AddFeederFormBean form = new AddFeederFormBean();
 
+        // set feeder info from the info queried into the new form
         form.setId(feeder.getId());
         form.setName(feeder.getName());
         form.setSize(feeder.getSize());
@@ -145,20 +135,26 @@ public class FeederController {
         form.setQuantity(feeder.getQuantity());
         form.setImgUrl(feeder.getImgUrl());
 
+        // pass "feederFormBean" as a modelkey back to form to be displayed on ui
         response.addObject("feederFormBean", form);
 
         return response;
     }
 
+    // This method to remove a feeder when url changed to include specific /feeder/remove/{feederId}
     @GetMapping(value = "/feeder/remove/{feederId}")
     public ModelAndView removeFeeder(@PathVariable("feederId") Integer feederId) throws Exception {
         ModelAndView response = new ModelAndView();
         response.setViewName("feeder/showFeeders");
 
+        // query feeder by feederId
         Feeder feeder = feederDAO.findById(feederId);
+        // if feeder is not null, aka found
         if (feeder != null) {
+            // delete from database
             feederDAO.delete(feeder);
         }
+        // redirect to showFeeders page
         response.setViewName("redirect:/feeder/showFeeders");
         return response;
     }

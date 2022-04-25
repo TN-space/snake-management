@@ -56,10 +56,10 @@ c-5 -32 -3 -39 14 -44 13 -4 41 2 70 14 28 12 64 20 82 18 46 -4 62 22 34 54
 </svg>
 <div class="add-form-container">
     <c:choose>
-        <%--    <c:when test="${empty formBean.id}"><h1>Sign up</h1></c:when>--%>
         <c:when test="${not empty snakeFormBean.id}"><h3 class="h3-add">Change Snake Information</h3></c:when>
         <c:otherwise><h3 class="h3-add">Add Snake</h3></c:otherwise>
     </c:choose>
+
     <%--method = get to show query after submit, method  is = post before --%>
     <form id="snake-form" action="/snake/added" method="get">
         <input type="hidden" name="id" value="${snakeFormBean.id}">
@@ -89,7 +89,6 @@ c-5 -32 -3 -39 14 -44 13 -4 41 2 70 14 28 12 64 20 82 18 46 -4 62 22 34 54
                 </c:choose>
             <span class="highlight"></span>
             <span class="bar add-bar"></span>
-<%--            <label class="add-label">Sex</label>--%>
             <c:forEach items="${bindingResult.getFieldErrors('sex')}" var="error">
                 <div style="color: red;">
                         ${error.getDefaultMessage()}
@@ -130,7 +129,6 @@ c-5 -32 -3 -39 14 -44 13 -4 41 2 70 14 28 12 64 20 82 18 46 -4 62 22 34 54
                 </div>
             </c:forEach>
         </div>
-<%--        Check box <input type="checkbox" name="checkbox">--%>
         <button class="submit-btn" type="submit">Submit</button>
     </form>
 </div>
