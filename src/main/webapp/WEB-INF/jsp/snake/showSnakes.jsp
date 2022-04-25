@@ -39,9 +39,9 @@
 <%--                        <c:forEach items="${ages}" var="age">--%>
 <%--                            <b>Age: </b>${age}<br>--%>
 <%--                        </c:forEach>--%>
-                        <b>Sex: </b>${snake.sex}<br>
-                        <b>Birthday: </b>${snake.birthDate}<br>
-                        <b>Note: </b>${snake.note}<br>
+                        <p><b>Sex: </b>${snake.sex}</p>
+                        <p><b>Birthday: </b>${snake.birthDate}</p>
+                        <p><b>Note: </b>${snake.note}</p>
                         <div class="card-control">
                             <a href="/snake/edit/${snake.id}" id="snake-edit-btn">Edit</a>
                             <a href="/snake/remove/${snake.id}" id="snake-remove-btn">Remove</a>

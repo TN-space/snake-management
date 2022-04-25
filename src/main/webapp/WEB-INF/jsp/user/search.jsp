@@ -14,6 +14,7 @@
     .table tr td a {
         color: #003d5c;
         opacity: 0.8;
+        text-decoration: none;
     }
     .search{
         display: flex;

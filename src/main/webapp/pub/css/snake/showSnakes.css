@@ -92,6 +92,7 @@ h2 {
     margin: -5px 0 0 -20px;
     padding: 10px 20px 10px 20px;
     position: relative;
+    font-size: 32px;
 }
 .card .card-title::before {
     position: absolute;
@@ -122,11 +123,18 @@ h2 {
     z-index: -1;
 }
 .card .card-detail {
-    background: #00e6b8;
-    background: #eee;
+    /*background: #00e6b8;*/
+    /*background: #eee;*/
+    font-size: 20px;
     height: auto;
-    margin: 0;
+    margin: 10px;
     transition: all 0.66s cubic-bezier(1, -0.28, 0.66, 0.48);
+}
+.card .card-detail p {
+    padding-bottom: 15px;
+}
+.card .card-detail a{
+    text-decoration: none;
 }
 .card-control{
     position: absolute;
@@ -213,7 +221,7 @@ h2 {
     height: 60px;
 }
 .card [type=checkbox]:checked ~ .tgl-view .card-title {
-    font-size: 18px;
+    font-size: 25px;
     line-height: 60px;
     margin-top: -80px;
     margin-left: -10px;
@@ -260,13 +268,16 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 10vh;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    /*width: 800px;*/
 }
 input[type=search] {
     box-shadow: 10px 10px 4px rgba(0,0,0,.4);
     background: #ffffff;
     border: 2px solid #81CCE8;
     outline: none;
-    width: 250px;
+    width: 500px;
     height: 50px;
     border-radius: 15px 0 0 15px;
     font-size: 1.4em;
