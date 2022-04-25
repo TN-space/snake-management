@@ -13,7 +13,7 @@ $('#feeder-edit-btn').click(function(){
     $('#feeder-form').show();
 })
 
-// for table in showFeedings
-$(function(){
-    $('#keywords').tablesorter();
-})
+// // for table in showFeedings
+// $(function(){
+//     $('#keywords').tablesorter();
+// })

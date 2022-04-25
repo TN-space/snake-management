@@ -67,5 +67,11 @@
 <%--        $('#snake-form').show();--%>
 <%--    })--%>
 <%--</script>--%>
+<script>
+    // for table in showFeedings
+    $(function(){
+        $('#keywords').tablesorter();
+    })
+</script>
 
 <jsp:include page="../include/footer.jsp" />

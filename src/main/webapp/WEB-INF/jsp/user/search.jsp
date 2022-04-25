@@ -8,6 +8,9 @@
         margin: 50px 100px;
         font-size: 20px;
     }
+    .table-head {
+        background-color: lightblue;
+    }
     .table tr:hover {
         background: lightblue;
     }
@@ -47,7 +50,7 @@
 </c:if>
 
 <table class="table">
-    <tr>
+    <tr class="table-head">
         <th>Email</th>
         <th>First Name</th>
         <th>Last Name</th>
