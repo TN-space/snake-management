@@ -2,7 +2,36 @@
 
 <jsp:include page="../include/header.jsp" />
 
-<h1>Search page</h1>
+<style>
+    .table{
+        width: 90%;
+        margin: 50px 100px;
+        font-size: 20px;
+    }
+    .table tr:hover {
+        background: lightblue;
+    }
+    .table tr td a {
+        color: #003d5c;
+        opacity: 0.8;
+    }
+    .search{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        /*margin: 0 50px;*/
+        width: 80vw;
+    }
+    .search input {
+        margin-left: 300px;
+    }
+    .btn-primary{
+        opacity: 0.9;
+    }
+</style>
+
+<h3>Search page</h3>
 
 <form action="/user/search" method="get" class="search col-md-8">
     <input name="searchInput" type="text" class="form-control" placeholder="${searchValue}">
@@ -13,7 +42,7 @@
 <%--    <h4>Total users: ${usersModel.size()}</h4>--%>
 <%--</c:if>--%>
 <c:if test="${not empty searchValue}">
-    <h4>Search Result: ${usersModel.size()}</h4>
+    <h4 class="h4-index" style="margin-top: 40px">Search Result: ${usersModel.size()}</h4>
 </c:if>
 
 <table class="table">
@@ -21,7 +50,7 @@
         <th>Email</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Edit</th>
+        <th>Action</th>
     </tr>
     <c:forEach items="${usersModel}" var="user">
         <tr>
