@@ -10,6 +10,7 @@
     }
     .table-head {
         background-color: lightblue;
+        filter: brightness(90%);
     }
     .table tr:hover {
         background: lightblue;
