@@ -7,6 +7,7 @@ This app allows user to:
 - authenticated user can add a feeder, see all feeders, and search for feeder into their stock
 - anthenticated user can add a feeding (feed feeder to a snake), see past feedings
 
+### Stacks used: Spring boot, Spring Security, Java, JavaScript, Jsp/HTML/CSS
 ### Planning Story
 #### User stories
 - as an anonymous user,  I want to create a new account
