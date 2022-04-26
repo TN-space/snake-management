@@ -35,7 +35,7 @@
         <nav class="navi">
             <div class="navi__container">
                 <ul class="navi__ul">
-                    <li class="navi__li"><a href="/index">Index</a></li>
+                    <li class="navi__li"><a href="/home">Home</a></li>
                     <sec:authorize access="!isAuthenticated()">
                         <li class="navi__li"><a href="/login/login">Login</a></li>
                         <li class="navi__li"><a href="/user/register">Sign up</a></li>

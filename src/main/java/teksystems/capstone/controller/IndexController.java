@@ -17,11 +17,11 @@ public class IndexController {
     private UserDAO userDAO;
 
     // This method to show index page
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView index() throws Exception {
         ModelAndView response = new ModelAndView();
 
-        response.setViewName("index");
+        response.setViewName("home");
 
         return response;
     }

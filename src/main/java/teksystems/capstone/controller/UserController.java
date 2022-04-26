@@ -57,8 +57,6 @@ public class UserController {
     @RequestMapping(value = "/user/registerSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView registerSubmit(@Valid RegisterFormBean form, BindingResult bindingResult) throws Exception {
         ModelAndView response = new ModelAndView();
-        log.info("form info: "+form);
-//        int i = 10/0;
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info(((FieldError) error).getField() + " " + error.getDefaultMessage());
@@ -87,7 +85,6 @@ public class UserController {
         String password = passwordEncoder.encode(form.getPassword());
         user.setPassword(password);
         userDAO.save(user);
-        log.info("user info: "+user);
 
         UserRole userRole = new UserRole();
         userRole.setUserId(user.getId());
@@ -101,7 +98,7 @@ public class UserController {
         // redirect use an actual url rather than a view name - .setViewName uses a file name in the structure
 //        response.setViewName("redirect:/user/edit/" + user.getId());
 
-        response.setViewName("/index");
+        response.setViewName("/home");
         return response;
     }
 
